@@ -12,5 +12,10 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('home');
+})->name('home');
+Route::post('/adduser', 'UserController@add');
+Route::post('/login', 'UserController@login');
+Route::get('/dashboard', 'UserController@dashboard');
+Route::get('/logout', 'UserController@logout');
+Route::get('/add', 'UserController@home');
