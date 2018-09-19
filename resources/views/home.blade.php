@@ -10,6 +10,7 @@
             <div class="col-md-4">                
             
             <h1>LOGIN</h1>
+            BANGSAT
                 <form action="/login" method="post">
                     {{ csrf_field() }}
                     <div class="form-group">
