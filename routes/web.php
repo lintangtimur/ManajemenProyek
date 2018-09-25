@@ -19,3 +19,6 @@ Route::post('/login', 'UserController@login');
 Route::get('/dashboard', 'UserController@dashboard');
 Route::get('/logout', 'UserController@logout');
 Route::get('/add', 'UserController@home');
+Route::get('/inputevent', 'EventController@index');
+
+Route::post('/kegiatan/upload', 'KegiatanController@upload');

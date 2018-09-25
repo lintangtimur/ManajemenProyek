@@ -5,23 +5,43 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Roles;
+use App\Kegiatan;
 use Validator;
 use Auth;
 use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
 {
+    /**
+     * Proses setelah login maka akan menuju dashboard
+     *
+     * @return void
+     */
     public function dashboard()
     {
-        if (Auth::user()) {   // Check is user logged in
-            $example = 'example';
-
-            return view('dashboard');
+        if (Auth::check() && Auth::user()->roleid == 1) {   // Check is user logged in
+            $role = Auth::user()->roleid;
+            $role = 'admin';
+        } elseif (Auth::check() && Auth::user()->roleid == 10) {
+            $role = 'dosen';
+        } elseif (Auth::check() && Auth::user()->roleid == 11) {
+            $role = 'ormawa';
+            $user = new User();
+            $kegiatan = $user->ormawaDashboard();
         } else {
-            return 'U cant access here!';
+            return redirect('/');
         }
+
+        return view('dashboard', compact('role', 'kegiatan'));
     }
 
+    /**
+     * Proses logout
+     *
+     * logout semua role, admin atau user sekalipun
+     *
+     * @return void
+     */
     public function logout()
     {
         Auth::logout();
@@ -61,7 +81,8 @@ class UserController extends Controller
 
                 return redirect()->intended('dashboard');
             } else {
-                echo 'Gagal Login';
+                // Jika login salah
+                return view('home');
             }
         }
     }

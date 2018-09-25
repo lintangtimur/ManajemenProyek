@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
     @include('partial.header')
+    <link rel="stylesheet" href="{{asset('css/tampilanlogin.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/tampilantimeline.min.css')}}">
 </head>
 <body>
 
@@ -34,10 +36,10 @@
 
 
             <!-- Upcoming event-->
-            <div class="col-md-8">
- <header class="page-header">
-    <h1>UpComing Event</h1>
-  </header>
+    <div class="col-md-8">
+    <header class="page-header">
+        <h1>UpComing Event</h1>
+    </header>
   
   <ul class="timeline">
     <li><div class="tldate">september 2018</div></li>

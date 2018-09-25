@@ -33,4 +33,14 @@ class User extends Authenticatable
     {
         $this->attributes['password'] = bcrypt($password);
     }
+
+    /**
+     * get index kegiatan
+     *
+     * @return Kegiatan
+     */
+    public function ormawaDashboard()
+    {
+        return Kegiatan::orderBy('tanggalAcara', 'DESC')->get();
+    }
 }
