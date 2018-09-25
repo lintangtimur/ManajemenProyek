@@ -2,16 +2,17 @@
 <html lang="en">
 <head>
     @include('partial.header')
-    <link rel="stylesheet" href="{{asset('css/tampilanlogin.min.css')}}">
+    
     <link rel="stylesheet" href="{{asset('css/tampilantimeline.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/tampilanlogin.min.css')}}">
 </head>
 <body>
 
 <div id="login">
         <div class="container">
             <div id="login-row" class="row justify-content-center align-items-center">
-                <div id="login-column" class="col-md-6">
-                    <div id="login-box" class="col-md-12">
+                <div id="login-column" class="col-md-4">
+                    <div id="login-box" class="col-md-8">
                 <h1>Login </h1><br>
                 <form action="/login" method="post">
                     {{ csrf_field() }}

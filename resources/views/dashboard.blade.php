@@ -2,9 +2,12 @@
 <html lang="en">
 <head>
     @include('partial.header')
+    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
+
 </head>
 <body>
     @include('partial.nav')
+    asd
     <div id="content">
         <div class="container mt-4">
             <div class="row">
