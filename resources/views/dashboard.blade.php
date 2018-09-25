@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
     @include('partial.header')
+    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
+
 </head>
 <body>
     @include('partial.nav')

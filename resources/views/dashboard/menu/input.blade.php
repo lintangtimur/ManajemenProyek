@@ -1,5 +1,9 @@
 @extends('dashboard.index')
 @section('inputevent')
+<head>
+<link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
+</head>
+
 <div class="col-md-6">
     <div class="card">
         @if(session('success'))
