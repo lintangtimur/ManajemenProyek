@@ -1,7 +1,6 @@
 @foreach ($kegiatan as $keg)
 <head>
-<link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
-
+<!-- <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}"> -->
 </head>
 
 <div class="col-md-6">

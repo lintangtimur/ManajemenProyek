@@ -7,7 +7,6 @@
 </head>
 <body>
     @include('partial.nav')
-    asd
     <div id="content">
         <div class="container mt-4">
             <div class="row">
