@@ -27,7 +27,7 @@
 
             <!-- login-->
             <div class="col-md-8">
-                
+                <h1>Upcoming Event</h1>
             </div>
     </div>
 
