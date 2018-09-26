@@ -9,7 +9,7 @@
     text-shadow: 1px 1px 0 #000;
     top:0;
     position:absolute;
-    right:400px;
+    right:200px;
   }
   
   /** timeline box structure **/
@@ -18,7 +18,7 @@
     padding: 20px 0 20px;
     position: absolute;
     right: 50px;
-    width: 1000px;
+    width: 700px;
     top:70px;
   }
   
@@ -35,7 +35,7 @@
   
   .tldate {
     display: block;
-    width: 50px;
+    width: 70px;
     background: #414141;
     border: 3px solid #212121;
     color: #ededed;
@@ -65,7 +65,7 @@
   
   /** timeline panels **/
   .timeline li .timeline-panel {
-    width: 46%;
+    width: 40%;
     float: left;
     background: #fff;
     border: 1px solid #d4d4d4;
