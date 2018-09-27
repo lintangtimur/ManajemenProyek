@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <head>
     @include('partial.header')
     
     <link rel="stylesheet" href="{{asset('css/tampilantimeline.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/tampilanlogin.min.css')}}">
+
 </head>
 <body>
 
@@ -91,7 +93,7 @@
       <div class="timeline-panel noarrow">
         <div class="tl-heading">
           <h4>No icon here</h4>
-          <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 3/16/2014</small></p>
+          <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 16/10/2018</small></p>
         </div>
         <div class="tl-body">
           <p>Here you'll find some beautiful photography for your viewing pleasure, courtesy of <a href="http://lorempixel.com/">lorempixel</a>.</p>
