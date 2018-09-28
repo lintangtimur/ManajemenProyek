@@ -234,3 +234,68 @@
 
     }
   }
+  @media only screen and (max-width:414px){
+    [class*="timeline"]{
+      /*for moblie phone */
+      top:700px;
+      width: 200px;
+     
+    }
+    .page-header h1{
+      font-size: 1.8em;
+      top: 600px;
+      left: 0px;
+    }
+    .timeline li .timeline-panel{
+      top: 0px;
+    
+    }
+    
+    .timeline-inverted{
+      top:10px;
+
+    }
+  }
+  /* untuk ngedit timeline di iphone 6-8 plus */
+  @media only screen and (max-width:736px){
+    [class*="timeline"]{
+      /*for moblie phone */
+      top:700px;
+   
+    }
+    .page-header h1{
+      font-size: 2em;
+      top: 620px;
+      left: 0px;
+    }
+    .timeline li .timeline-panel{
+      top: 0px;
+     
+    }
+    
+    .timeline-inverted{
+      top:10px;
+
+    }
+   
+  }
+  /* untuk iphone 6-8 */
+@media only screen and (max-width:375px){
+  [class*="timeline"]{
+    /*for moblie phone */
+    top:700px;
+  }
+  .page-header h1{
+    font-size: 2.0em;
+    top: 600px;
+    margin-left: 120px;
+  }
+  .timeline li .timeline-panel{
+    top: 0px;
+    margin-left: 20px;
+  }
+  .timeline-inverted{
+    top:10px;
+
+  }
+}
