@@ -10,7 +10,7 @@ body {
     height: 480px;
     border: 1px solid #9C9C9C;
     background-color: #EAEAEA;
-    margin-left: 150px;
+    margin-left: 80px;
 
   }
   #login .container #login-row #login-column #login-box #login-form {
@@ -85,4 +85,73 @@ label{
     
 }
  
+}
+@media only screen and (max-width:414px){
+  #login .container #login-row #login-column #login-box {
+    margin-top: 120px;
+    max-width: 500px;
+    height: 480px;
+    border: 1px solid #9C9C9C;
+    background-color: #EAEAEA;
+    margin-left: 10px;
+
+  }
+  button[type=submit] {
+    width: 50%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 5px 0;
+    margin-left: 100px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    
+}
+}
+@media only screen and (max-width:736px){
+  #login .container #login-row #login-column #login-box {
+    margin-top: 120px;
+    max-width: 500px;
+    height: 480px;
+    border: 1px solid #9C9C9C;
+    background-color: #EAEAEA;
+    margin-left: 70px;
+
+  }
+  button[type=submit] {
+    width: 50%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 5px 0;
+    margin-left: 100px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    
+}
+}
+@media only screen and (max-width:375px){
+  #login .container #login-row #login-column #login-box {
+    margin-top: 120px;
+    max-width: 500px;
+    height: 480px;
+    border: 1px solid #9C9C9C;
+    background-color: #EAEAEA;
+    margin-left: 10px;
+
+  }
+  button[type=submit] {
+    width: 50%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 5px 0;
+    margin-left: 100px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    
+}
 }
