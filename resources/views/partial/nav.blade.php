@@ -1,21 +1,32 @@
-<nav class="navbar navbar-expand-md navbar-light bg-light">
-    <a class="navbar-brand" href="#">NASM</a>
-    <button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
-        aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="collapsibleNavId">
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="nav-item active">
-                <a class="nav-link" href="/dashboard">Dashboard <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                @if(Auth::user()->roleid == 11)
-                <a class="nav-link" href="/inputevent">Input Event</a>
+<head>
+<link rel="stylesheet" href="{{asset('css/sidebar.min.css')}}">
+
+</head>
+<div id="mySidenav" class="sidenav">
+<a href="javascript:void(0)"class="closebtn" onclick="closenav()">&times;</a>
+    
+    <a href="/dashboard"><i class="fas fa-dashboard">Dashboard <span class="sr-only">(current)</span></i></a>
+                <span> @if(Auth::user()->roleid == 11)
+                <a class="nav-link" href="/inputevent"><i class="fas fa-file">Input Event</i></a>
                 @endif
-            </li>
-        </ul>
+            </span>
     </div>
+    <script>
+    function opennav() {
+    document.getElementById("mySidenav").style.width = "250px";
+    document.getElementById("asu").style.marginLeft = "120px";
+    document.getElementById("asu2").style.marginLeft="250px";
+        
+}
+function closenav(){
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("asu").style.marginLeft="0";
+    document.getElementById("asu2").style.marginLeft="0";
+}
+    </script>
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
+    <span class="navbar-brand" style="font-size:30px;cursor:pointer" onclick="opennav()">&#9776;NASM</span>
+    <div id="asu">
     <ul class="navbar-nav navbar-right">
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-users"></i> Hello, {{Session::get('username')}}</a>
@@ -24,4 +35,5 @@
             </div>
         </li>
     </ul>
+    </div>
 </nav>
