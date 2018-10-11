@@ -24,6 +24,8 @@ class UserController extends Controller
             $role = 'admin';
         } elseif (Auth::check() && Auth::user()->roleid == 10) {
             $role = 'dosen';
+            $user = new User();
+            $data = $user->ormawaDashboard();
         } elseif (Auth::check() && Auth::user()->roleid == 11) {
             $role = 'ormawa';
             $user = new User();
@@ -32,7 +34,7 @@ class UserController extends Controller
             return redirect('/');
         }
 
-        return view('dashboard', compact('role', 'kegiatan'));
+        return view('dashboard', compact('role', 'kegiatan', 'data'));
     }
 
     /**
@@ -82,7 +84,8 @@ class UserController extends Controller
                 return redirect()->intended('dashboard');
             } else {
                 // Jika login salah
-                return view('home');
+                // return view('home')->withErrors($validator);
+                return back()->withErrors(['msg'=>'Login salah']);
             }
         }
     }

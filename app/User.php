@@ -41,6 +41,11 @@ class User extends Authenticatable
      */
     public function ormawaDashboard()
     {
-        return Kegiatan::orderBy('tanggalAcara', 'DESC')->get();
+        // return Kegiatan::orderBy('tanggalAcara', 'DESC')->get();
+        return Kegiatan::join('users', 'kegiatans.uploaderId', '=', 'users.id')
+            ->select('kegiatans.id', 'kegiatans.namaAcara', 'kegiatans.temaAcara', 'kegiatans.tanggalAcara', 'kegiatans.tempatAcara', 'kegiatans.fileName', 'kegiatans.anggaran', 'kegiatans.pathFile', 'kegiatans.status', 'users.username')
+            ->where('kegiatans.status', 0)
+            ->orderBy('tanggalAcara', 'DESC')
+            ->get();
     }
 }

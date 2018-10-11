@@ -25,3 +25,46 @@ $(function(){
     // console.log(anggaran);
     $('#anggaranAcara').number(true,0);
 })
+
+$('.btnValidate').click(function(){
+    var idAcara = $(this).data('acara');
+    console.log(idAcara);
+
+    swal({
+        title: "Acc Proposal?",
+        text: "Ketika sudah di ACC, tidak dapat dikembalikan kembali!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: false,
+      })
+      .then((willDelete) => {
+        if (willDelete) {
+            $.ajax({
+                method: 'post',
+                url: "/accproposal",
+                data: {
+                    id: idAcara,
+                    _token: $('meta[name="csrf-token"]').attr('content')
+                }
+            })
+            .done(function(resp){
+                console.log("SUKSES");
+                console.log(resp);
+                swal("Telah di acc", {
+                    icon: "success",
+                });
+                
+                setTimeout(() => {
+                    location.reload();
+                }, 2000);          
+            })
+            .fail(function(resp){
+                console.error(resp);
+                console.log("GAGAL UPDATE");
+            });
+
+        } else {
+          swal("Tidak ada perubahan");
+        }
+      });
+})

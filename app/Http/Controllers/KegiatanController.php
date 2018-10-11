@@ -38,4 +38,22 @@ class KegiatanController extends Controller
         ->back()
         ->withSuccess(sprintf('File %s berhasil terupload', $fileName));
     }
+
+    /**
+     * Update status proposal menjadi ACC
+     *
+     * @param  Request $req
+     * @return void
+     */
+    public function accKegiatan(Request $req)
+    {
+        // dd($req->id);
+        $res = Kegiatan::where('id', $req->id)->update(['status'=>1]);
+        $resp = [
+            'status'       => 'success',
+            'affectedRows' => $res
+        ];
+
+        return response()->json($resp);
+    }
 }

@@ -22,3 +22,4 @@ Route::get('/add', 'UserController@home');
 Route::get('/inputevent', 'EventController@index');
 
 Route::post('/kegiatan/upload', 'KegiatanController@upload');
+Route::post('/accproposal', 'KegiatanController@accKegiatan');
