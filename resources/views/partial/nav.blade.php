@@ -4,25 +4,22 @@
 </head>
 <div id="mySidenav" class="sidenav">
 <a href="javascript:void(0)"class="closebtn" onclick="closenav()">&times;</a>
-    
-    <a href="/dashboard"><i class="fa fa-dashboard"></i>Dashboard <span class="sr-only">(current)</span></a>
-                <span> @if(Auth::user()->roleid == 11)
+    <a href="/dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard <span class="sr-only">(current)</span></a>
+        <span> 
+            @if(Auth::user()->roleid == 11)
                 <a class="nav-link" href="/inputevent"><i class="fa fa-file"></i>Input Event</a>
-                @endif
-            </span>
+            @endif
+        </span>
     </div>
     <script>
-    function opennav() {
-    document.getElementById("mySidenav").style.width = "200px";
-    document.getElementById("asu").style.marginLeft = "200px";
-    
-        
-}
-function closenav(){
-    document.getElementById("mySidenav").style.width = "0";
-    document.getElementById("asu").style.marginLeft="0";
-    
-}
+        function opennav() {
+            document.getElementById("mySidenav").style.width = "200px";
+            document.getElementById("asu").style.marginLeft = "200px";    
+        }
+        function closenav(){
+            document.getElementById("mySidenav").style.width = "0";
+            document.getElementById("asu").style.marginLeft="0";    
+        }
     </script>
     <nav class="navbar navbar-expand-lg  navbar-light bg-light">
     <span class="navbar-brand" style="font-size:30px;cursor:pointer" onclick="opennav()">&#9776;NASM</span>
