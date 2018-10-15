@@ -8,7 +8,7 @@
 <body>
     @include('partial.nav')
     <div id="content">
-    <div id="asu2">
+    <div id="asu">
         <div class="container mt-4">
             <div class="row">
                 @if($role == 'admin')

@@ -6,7 +6,7 @@
     
     <link rel="stylesheet" href="{{asset('css/tampilantimeline.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/tampilanlogin.min.css')}}">
-
+    
 </head>
 <body>
 
@@ -26,7 +26,9 @@
                         <label for="pass">Password</label>
                         <input type="password" name="password" id="pass" class="form-control" placeholder="pass" aria-describedby="helpId">                                  
                     </div>
+                   
                     <button type="submit" class="btn btn-info">LOGIN</button>
+                    
                 </form>
                 @include('partial.error')
                 
@@ -89,57 +91,10 @@
         </div>
       </div>
     </li>
-    <li class="timeline-inverted">
-      <div class="timeline-panel noarrow">
-        <div class="tl-heading">
-          <h4>No icon here</h4>
-          <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 16/10/2018</small></p>
-        </div>
-        <div class="tl-body">
-          <p>Here you'll find some beautiful photography for your viewing pleasure, courtesy of <a href="http://lorempixel.com/">lorempixel</a>.</p>
-          
-          <p><img src="http://lorempixel.com/600/300/nightlife/" alt="lorem pixel"></p>
-        </div>
-      </div>
-    </li>
-    <li>
-      <div class="tl-circ"></div>
-      <div class="timeline-panel">
-        <div class="tl-heading">
-          <h4>Some Important Date!</h4>
-          <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 3/03/2014</small></p>
-        </div>
-        <div class="tl-body">
-          <p>Write up a quick summary of the event.</p>
-        </div>
-      </div>
-    </li>
-    <li>
-      <div class="timeline-panel noarrow">
-        <div class="tl-heading">
-          <h4>Secondary Timeline Box</h4>
-          <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 3/01/2014</small></p>
-        </div>
-        <div class="tl-body">
-          <p>This might be a follow-up post with related info. Maybe we include some extra links, tweets, user comments, photos, etc.</p>
-        </div>
-      </div>
-    </li>
     
-    <li><div class="tldate">Feb 2014</div></li>
+    <li><div class="tldate">November 2018</div></li>
     
-    <li class="timeline-inverted">
-      <div class="tl-circ"></div>
-      <div class="timeline-panel">
-        <div class="tl-heading">
-          <h4>The Winter Months</h4>
-          <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 02/23/2014</small></p>
-        </div>
-        <div class="tl-body">
-          <p>Gee time really flies when you're having fun.</p>
-        </div>
-      </div>
-    </li>
+    
     
   </ul>
   
