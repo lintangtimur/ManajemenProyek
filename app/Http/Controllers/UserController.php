@@ -25,7 +25,7 @@ class UserController extends Controller
         } elseif (Auth::check() && Auth::user()->roleid == 10) {
             $role = 'dosen';
             $user = new User();
-            $data = $user->ormawaDashboard();
+            $data = $user->dosenDashboard();
         } elseif (Auth::check() && Auth::user()->roleid == 11) {
             $role = 'ormawa';
             $user = new User();

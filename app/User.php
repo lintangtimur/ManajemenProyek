@@ -35,16 +35,29 @@ class User extends Authenticatable
     }
 
     /**
-     * get index kegiatan
+     * dashboard untuk dosen
      *
      * @return Kegiatan
      */
-    public function ormawaDashboard()
+    public function dosenDashboard()
     {
         // return Kegiatan::orderBy('tanggalAcara', 'DESC')->get();
         return Kegiatan::join('users', 'kegiatans.uploaderId', '=', 'users.id')
             ->select('kegiatans.id', 'kegiatans.namaAcara', 'kegiatans.temaAcara', 'kegiatans.tanggalAcara', 'kegiatans.tempatAcara', 'kegiatans.fileName', 'kegiatans.anggaran', 'kegiatans.pathFile', 'kegiatans.status', 'users.username')
             ->where('kegiatans.status', 0)
+            ->orderBy('tanggalAcara', 'DESC')
+            ->get();
+    }
+
+    /**
+     * dashboard untuk ormawa
+     *
+     * @return Kegiatan
+     */
+    public function ormawaDashboard()
+    {
+        return Kegiatan::join('users', 'kegiatans.uploaderId', '=', 'users.id')
+            ->select('kegiatans.id', 'kegiatans.namaAcara', 'kegiatans.temaAcara', 'kegiatans.tanggalAcara', 'kegiatans.tempatAcara', 'kegiatans.fileName', 'kegiatans.anggaran', 'kegiatans.pathFile', 'kegiatans.status', 'users.username')
             ->orderBy('tanggalAcara', 'DESC')
             ->get();
     }
