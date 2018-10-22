@@ -12,6 +12,10 @@
 */
 
 Route::get('/', function () {
+    if (session('roleid') == 11 || session('roleid') == 10) {
+        return redirect('dashboard');
+    }
+
     return view('home');
 })->name('home');
 Route::post('/adduser', 'UserController@add');

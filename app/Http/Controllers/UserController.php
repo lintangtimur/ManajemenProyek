@@ -33,6 +33,7 @@ class UserController extends Controller
         } else {
             return redirect('/');
         }
+        Session::put('roleid', Auth::user()->roleid);
 
         return view('dashboard', compact('role', 'kegiatan', 'data'));
     }
@@ -90,6 +91,12 @@ class UserController extends Controller
         }
     }
 
+    /**
+     * Fungsi untuk melakukan registrasi user
+     *
+     * @param  Request $req
+     * @return void
+     */
     public function add(Request $req)
     {
         $req->validate([
