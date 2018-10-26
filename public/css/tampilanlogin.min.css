@@ -18,9 +18,13 @@
 .google { 
     background-color:red;
     color:#fff;
-width: 170px; }
+    width: 170px;
+}
+.btn-block{
+    width: 100% !important;
+}
 .google:hover { 
-    color:#00b500; 
+    color:#e4eee4; 
 }
 li{
     padding-left: 10px;

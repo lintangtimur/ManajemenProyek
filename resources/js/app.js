@@ -24,6 +24,7 @@ $(function(){
     // var anggaran = numeral($('.numeralAnggaran').text()).format('(Rp 0.00 a)');
     // console.log(anggaran);
     $('#anggaranAcara').number(true,0);
+    $(".social-login-box").height( $(".login-box").height() - 1000 );
 })
 
 $('.btnValidate').click(function(){
@@ -48,8 +49,8 @@ $('.btnValidate').click(function(){
                 }
             })
             .done(function(resp){
-                console.log("SUKSES");
-                console.log(resp);
+                console.info("SUKSES");
+                console.info(resp);
                 swal("Telah di acc", {
                     icon: "success",
                 });
@@ -64,7 +65,7 @@ $('.btnValidate').click(function(){
             });
 
         } else {
-          swal("Tidak ada perubahan");
+          swal("Proses ACC proposal dibatalkan");
         }
       });
 })
