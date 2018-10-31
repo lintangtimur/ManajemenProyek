@@ -18,17 +18,24 @@
 .google { 
     background-color:red;
     color:#fff;
-    width: 170px;
-}
-.btn-block{
-    width: 100% !important;
-}
+width: 170px; }
+
 .google:hover { 
-    color:#e4eee4; 
+    color:#00b500; 
 }
-li{
-    padding-left: 10px;
-    width:30px ;
-    padding-right: 40px;
-    
+
+.google i{
+    float: left;
+   margin-left: -12px;
+   margin-top: -6px;
+   color: white;
+   background-color: maroon;
+   font-size: 30px;
+   padding-left: 7px;
+   z-index: -1;
+   padding-right: 8px;
+   padding-top: 4px;
+   padding-bottom: 2px;
+   
 }
+
