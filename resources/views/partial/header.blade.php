@@ -16,6 +16,8 @@
     body{
         background-color: #edf1f5 !important;       
         font-family: GoogleSans-Regular !important;
+        background:url('img/background_body.png');
+        background-size:100%;
     }
     #contentCard{
         position: absolute;
