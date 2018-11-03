@@ -2,14 +2,19 @@
   /** Css Upcoming Events **/
   img { border: 0; max-width: 100%; }
   
+  @font-face{
+    font-family: 'GoogleSans-Regular';
+    src: url('font/GoogleSans-Regular.ttf');
+  }
   .page-header h1 {
     font-size: 3.26em;
     text-align: center;
-    color: #efefef;
+    color: #070707;
     text-shadow: 1px 1px 0 #000;
     top:-300px;
     position:absolute;
     right:-300px;
+    font-family: GoogleSans-Regular !important;
   }
   
 .main-timeline7{
@@ -148,13 +153,13 @@
   font-weight:700;
   color:#727cb6;
   margin-top:0;
-  font-family:'GoogleSans-Regular';
+  font-family:GoogleSans-Regular !important
   }
 .main-timeline7 .description{
   font-size:15px;
   color:#7f8386;
   line-height:25px;
- 
+  font-family: GoogleSans-Regular !important;
 }
 /* jika di comment maka urutan genap akan naik ke atas menutupi urutan yang ganjil */ 
 .main-timeline7 .timeline:nth-child(2){
@@ -265,6 +270,48 @@
 }
 .main-timeline7 .timeline:nth-child(6n) .title{
   color:blue;
+}
+.main-timeline7 .timeline:nth-child(7n) .timeline-icon,.main-timeline7 .timeline:nth-child(7n):before{
+  background:maroon;
+}
+.main-timeline7 .timeline:nth-child(7n) .timeline-icon:before{
+  border-color:maroon;
+  box-shadow:0 0 0 4px maroon;
+}
+.main-timeline7 .timeline:nth-child(7n) .year:before{
+  background:maroon;
+  box-shadow:0 0 0 4px maroon;
+}
+.main-timeline7 .timeline:nth-child(7n) .title{
+  color:maroon;
+}
+.main-timeline7 .timeline:nth-child(8n) .timeline-icon,.main-timeline7 .timeline:nth-child(8n):before{
+  background:magenta;
+}
+.main-timeline7 .timeline:nth-child(8n) .timeline-icon:before{
+  border-color:magenta;
+  box-shadow:0 0 0 4px magenta;
+}
+.main-timeline7 .timeline:nth-child(8n) .year:before{
+  background:magenta;
+  box-shadow:0 0 0 4px magenta;
+}
+.main-timeline7 .timeline:nth-child(8n) .title{
+  color:magenta;
+}
+.main-timeline7 .timeline:nth-child(9n) .timeline-icon,.main-timeline7 .timeline:nth-child(9n):before{
+  background:brown;
+}
+.main-timeline7 .timeline:nth-child(9n) .timeline-icon:before{
+  border-color:brown;
+  box-shadow:0 0 0 4px brown;
+}
+.main-timeline7 .timeline:nth-child(9n) .year:before{
+  background:brown;
+  box-shadow:0 0 0 4px brown;
+}
+.main-timeline7 .timeline:nth-child(9n) .title{
+  color:brown;
 }
 
 /* responsive dengan lebar 990px */
