@@ -1,7 +1,7 @@
-<head>
-<link rel="stylesheet" href="{{asset('css/sidebar.min.css')}}">
+{{-- <head> --}}
+{{-- <link rel="stylesheet" href="{{asset('css/sidebar.min.css')}}"> --}}
 
-</head>
+{{-- </head> --}}
 <div id="mySidenav" class="sidenav">
 <a href="javascript:void(0)"class="closebtn" onclick="closenav()">&times;</a>
     <a href="/dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard <span class="sr-only">(current)</span></a>
