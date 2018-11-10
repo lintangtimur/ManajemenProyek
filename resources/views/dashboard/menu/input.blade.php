@@ -1,9 +1,10 @@
+@if(!$bypass)
+{{dd('restricted')}}
+@endif
 @extends('dashboard.index')
 @section('inputevent')
-<head>
-<link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
-</head>
 
+<link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
 <div class="col-md-6">
     <div class="card">
         @if(session('success'))
@@ -11,6 +12,7 @@
                 {{ session('success') }}
             </div>
         @endif
+        
         <form action="kegiatan/upload" method="post" enctype="multipart/form-data">
             {{ csrf_field() }}
         <div class="card-body">
