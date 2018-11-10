@@ -9,7 +9,8 @@
         "fideloper/proxy": "^4.0",
         "laravel/framework": "5.7.*",
         "laravel/socialite": "^3.1",
-        "laravel/tinker": "^1.0"
+        "laravel/tinker": "^1.0",
+        "yajra/laravel-datatables-oracle": "~8.0"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",
