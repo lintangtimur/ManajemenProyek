@@ -6,7 +6,7 @@
                 <div class="row">
                     <div class="col-md-3 text-center" style="background-color:greenyellow;">
                         <div id="contentCard">
-                            <div>20</div>
+                        <div>{{$totalApproved}}</div>
                         </div>
                     </div>
                     <div class="col-md-8">
@@ -27,46 +27,68 @@
     </div>
     <div class="card mt-4">
         <div class="card-body">
-            <h4 class="card-title">Title</h4>
-            <table class="table table-inverse table-responsive">
-                <thead class="thead-default">
-                    <tr>
-                        <th>Nama Kegiatan</th>
-                        <th>Tema Acara</th>
-                        <th>Waktu Acara</th>
-                        <th>Tempat Acara</th>
-                        <th>Penyelenggara</th>
-                        <th>Anggaran</th>
-                        <th>Proposal</th>
-                        <th width="15%;">Status</th>
-                        <th>Komentar</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($data as $item)
+            
+            <div class="table-responsive">
+                <table class="table table-inverse" id="tDosenDashboard">
+                    <thead class="thead-default">
                         <tr>
-                            <td>{{$item->namaAcara}}</td>
-                            <td>{{$item->temaAcara}}</td>
-                            <td>{{$item->tanggalAcara}}</td>
-                            <td>{{$item->tempatAcara}}</td>
-                            <td>{{$item->username}}</td>
-                            <td>{{
-                                $hasil_rupiah = "Rp " . number_format($item->anggaran,2,',','.')
-                            }}</td>
-                            {{-- <td><a href="{{Storage::url($item->pathFile)}}">{{$item->fileName}}</a></td> --}}
-                            <td><a href="{{Storage::url($item->pathFile)}}" data-placement="right" title="Download {{$item->fileName}}">Download</a></td>
-                            <td>
-                                {{-- <button type="button" class="btn btnValidate btn-success" data-acara="{{$item->id}}"><i class="far fa-check-circle"></i></button> --}}
-                                <a href="#"><i style="color:green;" class="btnValidate far fa-check-circle fa-lg" data-acara="{{$item->id}}" data-placement="right" title="Klik untuk ACC Proposal"></i></a>
-                                <a href="#"><i style="color:red;"class="btnDecline fas fa-ban fa-lg" data-placement="right" title="Klik untuk menolak Proposal"></i></a>
-                                {{-- <button type="button" class="btn btnDecline btn-danger" data-acara="{{$item->id}}">DEC</button> --}}
-                            </td>
-                        <td><button type="button" class="btn btn-primary"><i class="fas fa-envelope-square"></i> Add Comment</button></td>
+                            <th>Nama Kegiatan</th>
+                            <th>Tema Acara</th>
+                            <th>Waktu Acara</th>
+                            <th>Tempat Acara</th>
+                            <th>Penyelenggara</th>
+                            <th>Anggaran</th>
+                            <th>Proposal</th>
+                            <th width="15%;">Status</th>
                         </tr>
-                        @endforeach
-                    </tbody>
-            </table>
-            {{-- <p class="card-text">Text</p> --}}
+                        </thead>
+                        <tbody>
+                        </tbody>
+                </table>
+            </div>
+            
+
+            {{-- MODAL --}}
+            <div class="modal fade" id="modalDosenDecline" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Catatan Komentar</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="kegiatan/upload" method="post" enctype="multipart/form-data">
+                            {{ csrf_field() }}
+                        <div class="card-body">
+                            <h4 class="card-title" id="card-title-comment">Edit Acara</h4>
+                            <div class="form-group">
+                                <label for="namaAcara">Judul revisi</label>
+                                <input type="text" name="namaAcara" id="namaAcara" class="form-control" placeholder="masukkan judul revisi">
+                            </div>
+                            
+                            <button class="btn btn-warning" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                <i class="fas fa-plus-square"></i>Tambahkan catatan revisi
+                            </button>
+                            <div class="collapse" id="collapseExample">
+                                <div class="card card-body mt-2 border border-warning">
+                                    <div class="form-group">
+                                        <label for="catatanRevisi">Comment</label>
+                                        <textarea class="form-control" name="catatanRevisi" id="catatanRevisi" rows="3"></textarea>
+                                        <small class="text-muted">Jika tidak ada komentar kosongkan saja textarea tersebut</small>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </form>
+                  </div>
+                </div>
+              </div>
         </div>
     </div>
 </div>

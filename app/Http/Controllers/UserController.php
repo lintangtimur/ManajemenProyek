@@ -9,9 +9,34 @@ use App\Kegiatan;
 use Validator;
 use Auth;
 use Illuminate\Support\Facades\Session;
+use Yajra\Datatables\Datatables;
+use Laravel\Socialite\Facades\Socialite;
 
 class UserController extends Controller
 {
+    public function getDosen()
+    {
+        $user = new User();
+        $data = $user->dosenDashboard();
+
+        return Datatables::of($data)
+            ->addColumn('action', function ($data) {
+                return "<a href='#" . $data->id . "'><i style='color:green;' class='btnValidate far fa-check-circle fa-lg' data-acara=" . $data->id . " data-placement='right' title='Klik untuk ACC Proposal'></i></a>
+                <a href='#'><i style='color:red;' class='btnDecline fas fa-ban fa-lg' data-toggle='modal' data-target='#modalDosenDecline' data-placement='right' title='Klik untuk menolak Proposal'></i></a>
+                ";
+            })
+            ->editColumn('anggaran', function ($data) {
+                $hasil_rupiah = 'Rp ' . number_format($data->anggaran, 2, ',', '.');
+
+                return $hasil_rupiah;
+            })
+            ->addColumn('pathFile', function ($data) {
+                return view('template.link', compact('data'));
+            })
+            ->rawColumns(['pathFile', 'action'])
+            ->make(true);
+    }
+
     /**
      * Proses setelah login maka akan menuju dashboard
      *
@@ -24,18 +49,19 @@ class UserController extends Controller
             $role = 'admin';
         } elseif (Auth::check() && Auth::user()->roleid == 10) {
             $role = 'dosen';
-            $user = new User();
-            $data = $user->dosenDashboard();
+            $totalApproved = (new Kegiatan())->totalApproved();
         } elseif (Auth::check() && Auth::user()->roleid == 11) {
             $role = 'ormawa';
             $user = new User();
             $kegiatan = $user->ormawaDashboard();
+        } elseif (Auth::check() && Auth::user()->roleid == 12) {
+            $role = 'mahasiswa';
         } else {
             return redirect('/');
         }
         Session::put('roleid', Auth::user()->roleid);
 
-        return view('dashboard', compact('role', 'kegiatan', 'data'));
+        return view('dashboard', compact('role', 'kegiatan', 'data', 'totalApproved'));
     }
 
     /**
@@ -118,5 +144,43 @@ class UserController extends Controller
         ]);
 
         return redirect()->to('/')->with('message', 'Registrasi Sukses');
+    }
+
+    public function redirectToProvider()
+    {
+        return Socialite::driver('google')->redirect();
+    }
+
+    public function handleProviderCallback()
+    {
+        try {
+            $user = Socialite::driver('google')->user();
+        } catch (\Exception $e) {
+            return redirect('/');
+        }
+
+        $email = explode('@', $user->email)[1];
+
+        if ($email !== 'student.unika.ac.id') {
+            return redirect()->to('/');
+        } else {
+            $existingUser = User::where('email', $user->email)->first();
+
+            if ($existingUser) {
+                Session::put('username', $user->name);
+                Auth::login($existingUser, true);
+            } else {
+                $newUser = new User;
+                $newUser->username = explode('@', $user->email)[0];
+                $newUser->email = $user->email;
+                $newUser->roleid = 12;
+                $newUser->password = bcrypt('qwerty');
+                $newUser->save();
+                Session::put('username', $user->name);
+                Auth::login($newUser, true);
+            }
+
+            return redirect()->intended('dashboard');
+        }
     }
 }

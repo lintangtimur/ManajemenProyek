@@ -20,6 +20,9 @@
                 @if($role == 'ormawa')
                 @include('dashboard.ormawa')
                 @endif
+                @if($role == 'mahasiswa')
+                @include('dashboard.mahasiswa')
+                @endif
             </div>
         </div>
     </div>
