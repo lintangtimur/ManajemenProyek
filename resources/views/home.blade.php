@@ -19,7 +19,7 @@
                     <div class="row">
                         <div class="col-md-6 separator social-login-box">
                             <h4>Login Mahasiswa</h4>
-                            <a href="#" class="btn google btn-block" type="button"><i class="fab fa-google"></i>Login With Student Unika</a>
+                            <a href="/redirect" class="btn google btn-block" type="button"><i class="fab fa-google"></i>Login With Student Unika</a>
                         </div>
                         <div class="col-sm-6 col-md-6 login-box">
                             <form action="/login" method="post" role="form">
@@ -43,78 +43,24 @@
         </div>
     </div>
 
-{{-- <script>
-    $(document).ready(function(){
-        $(".social-login-box").height( $(".login-box").height() - 1000 );
-    });
-</script> --}}
-
             <!-- Upcoming event-->
     <div class="col-md-8">
-    <header class="page-header">
-        <h1>UpComing Event &</h1>
-    </header>
-    <div class="main-timeline7">
-        <div class="timeline">
-           <div class="timeline-icon"><i class="fa fa-calendar"></i></div>
-              <span class="year">2018</span>
+        <header class="page-header">
+            <h1>UpComing Event</h1>
+        </header>
+        <div class="main-timeline7">
+            @foreach ($kegiatanApproved as $item)
+            <div class="timeline">
+                <div class="timeline-icon"><i class="fa fa-calendar"></i></div>
+                <span class="year">{{$item->tanggalAcara->format('d M y')}}</span>
                 <div class="timeline-content">
-                        <h5 class="title">Senin</h5>
-                          <p class="description">
-                                    WES BOLOS DISKRIT RAK ONO BAJU CUK
-                                </p>
-                            </div>
-                        </div>
-                        <div class="timeline">
-                            <div class="timeline-icon"><i class="fa fa-calendar"></i></div>
-                            <span class="year">2018</span>
-                            <div class="timeline-content">
-                                <h5 class="title">Selasa</h5>
-                                <p class="description">
-                                    WES NYAWA 0 DI MP BANGSAT TENAN
-                                </p>
-                            </div>
-                        </div>
-                        <div class="timeline">
-                            <div class="timeline-icon"><i class="fa fa-calendar"></i></div>
-                            <span class="year">2018</span>
-                            <div class="timeline-content">
-                                <h5 class="title">Rabu</h5>
-                                <p class="description">
-                                    KUMPULIN KKN CUK
-                                </p>
-                            </div>
-                        </div>
-                        <div class="timeline">
-                            <div class="timeline-icon"><i class="fa fa-calendar"></i></div>
-                            <span class="year">2018</span>
-                            <div class="timeline-content">
-                                <h5 class="title">Kamis</h5>
-                                <p class="description">
-                                    WES NYAWA 0 DI MP BANGSAT TENAN
-                                </p>
-                            </div>
-                        </div>
-                        <div class="timeline">
-                            <div class="timeline-icon"><i class="fa fa-calendar"></i></div>
-                            <span class="year">2018</span>
-                            <div class="timeline-content">
-                                <h5 class="title">Jumat</h5>
-                                <p class="description">
-                                    LIBUR JANCUK
-                                </p>
-                            </div>
-                        </div>
-                        <div class="timeline">
-                            <div class="timeline-icon"><i class="fa fa-calendar"></i></div>
-                            <span class="year">2018</span>
-                            <div class="timeline-content">
-                                <h5 class="title">Sabtu</h5>
-                                <p class="description">
-                                    LIBUR JANCUK
-                                </p>
-                            </div>
-                        </div>
+                    <h5 class="title">{{$item->namaAcara}}</h5>
+                    <p class="description">
+                        {{$item->temaAcara}}
+                    </p>
+                </div>
+            </div>
+            @endforeach
         </div>
     </div>
 

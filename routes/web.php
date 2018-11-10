@@ -11,13 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    if (session('roleid') == 11 || session('roleid') == 10) {
-        return redirect('dashboard');
-    }
-
-    return view('home');
-})->name('home');
+Route::get('/', 'HomeController@index')->name('home');
+Route::get('/dosendashboard', 'UserController@getDosen')->name('get.dashboard');
 Route::post('/adduser', 'UserController@add');
 Route::post('/login', 'UserController@login');
 Route::get('/dashboard', 'UserController@dashboard');
@@ -27,3 +22,7 @@ Route::get('/inputevent', 'EventController@index');
 
 Route::post('/kegiatan/upload', 'KegiatanController@upload');
 Route::post('/accproposal', 'KegiatanController@accKegiatan');
+
+//Laravel Socialite
+Route::get('/redirect', 'UserController@redirectToProvider');
+Route::get('/callback', 'UserController@handleProviderCallback');
