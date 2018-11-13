@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Session;
 use Yajra\Datatables\Datatables;
 use Laravel\Socialite\Facades\Socialite;
 use function GuzzleHttp\Promise\all;
+use App\Revisions;
 
 class UserController extends Controller
 {
@@ -58,6 +59,14 @@ class UserController extends Controller
             $role = 'ormawa';
             $user = new User();
             $kegiatan = $user->ormawaDashboard();
+            $tampung = [];
+
+            foreach (Revisions::all() as $key => $value) {
+                if (in_array($value->idAcara, $tampung)) {
+                } else {
+                    array_push($tampung, $value->idAcara);
+                }
+            }
         } elseif (Auth::check() && Auth::user()->roleid == 12) {
             $role = 'mahasiswa';
         } else {
@@ -65,7 +74,7 @@ class UserController extends Controller
         }
         Session::put('roleid', Auth::user()->roleid);
 
-        return view('dashboard', compact('role', 'kegiatan', 'data', 'totalApproved'));
+        return view('dashboard', compact('role', 'kegiatan', 'data', 'totalApproved', 'tampung'));
     }
 
     /**

@@ -14,7 +14,7 @@
 @foreach ($kegiatan as $keg)
 <div class="col-md-6">
     <div class="jumbotron">
-        @if ($keg->status == 0)
+        @if ($keg->status == 0 && in_array($keg->id, $tampung))
         <button type="button" class="btn btn-danger mb-2 btnRevisiacara" data-toggle="collapse" data-revisiacara="{{$keg->id}}" data-target="#revisiCollapse-{{$keg->id}}" aria-expanded="false" aria-controls="revisiCollapse">
             <i class="fas fa-exclamation-triangle"></i> Catatan Revisi
         </button>
