@@ -13769,7 +13769,7 @@ $(function () {
             $('.btnDecline').click(function () {
                 var idAcara = $(this).data('acara');
                 var namaAcara = $(this).parents("tr").children("td:first").text();
-                console.log(namaAcara);
+                $('#idAcara').val(idAcara);
                 $('#card-title-comment').text(namaAcara);
             });
         },
@@ -13783,24 +13783,25 @@ $('.btnEditOrmawa').click(function () {
     console.log(idkegiatanOrmawa);
 });
 
-// $('#itemPerPage').on('change', function(){
-//     var itemPerPage = $(this).val();
-//     $.ajax({    
-//         method: 'get',
-//         url: '/dashboard/?itemPerPage='+itemPerPage,
-//         data:{
-//             _token: $('meta[name="csrf-token"]').attr('content')
-//         }
-//     })
-//     .done(function(resp){
-//         console.info("SUKSES");
-//         console.info(resp);
-//     })
-//     .fail(function(resp){
-//         console.error(resp);
-//         console.log("GAGAL UPDATE");
-//     })
-// })
+$('.btnRevisiacara').click(function () {
+    var revisiacara_id = $(this).data('revisiacara');
+    var comment_section = $('.revisicomment-' + revisiacara_id);
+    var judul_section = $('.judulrevisi-' + revisiacara_id);
+    console.log(revisiacara_id);
+
+    $.ajax({
+        url: 'dashboard/revisi/commendid/' + revisiacara_id,
+        method: 'get',
+        dataType: 'json'
+    }).done(function (resp) {
+        console.log(resp);
+        $.each(resp, function (index, val) {
+            console.log(val);
+            comment_section.html(val.comment);
+            judul_section.html(val.judulrevisi);
+        });
+    }).fail(function (err) {});
+});
 
 /***/ }),
 /* 12 */

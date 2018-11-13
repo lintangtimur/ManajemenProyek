@@ -26,3 +26,7 @@ Route::post('/accproposal', 'KegiatanController@accKegiatan');
 //Laravel Socialite
 Route::get('/redirect', 'UserController@redirectToProvider');
 Route::get('/callback', 'UserController@handleProviderCallback');
+
+Route::post('dashboard/inputcomment', 'RevisionsController@store');
+
+Route::get('dashboard/revisi/commendid/{idacara}', 'RevisionsController@get')->name('revisi.show');

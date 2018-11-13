@@ -11,6 +11,7 @@ use Auth;
 use Illuminate\Support\Facades\Session;
 use Yajra\Datatables\Datatables;
 use Laravel\Socialite\Facades\Socialite;
+use function GuzzleHttp\Promise\all;
 
 class UserController extends Controller
 {
@@ -22,13 +23,16 @@ class UserController extends Controller
         return Datatables::of($data)
             ->addColumn('action', function ($data) {
                 return "<a href='#" . $data->id . "'><i style='color:green;' class='btnValidate far fa-check-circle fa-lg' data-acara=" . $data->id . " data-placement='right' title='Klik untuk ACC Proposal'></i></a>
-                <a href='#'><i style='color:red;' class='btnDecline fas fa-ban fa-lg' data-toggle='modal' data-target='#modalDosenDecline' data-placement='right' title='Klik untuk menolak Proposal'></i></a>
+                <a href='#'><i style='color:red;' class='btnDecline fas fa-ban fa-lg' data-toggle='modal' data-acara=" . $data->id . " data-target='#modalDosenDecline' data-placement='right' title='Klik untuk menolak Proposal'></i></a>
                 ";
             })
             ->editColumn('anggaran', function ($data) {
                 $hasil_rupiah = 'Rp ' . number_format($data->anggaran, 2, ',', '.');
 
                 return $hasil_rupiah;
+            })
+            ->editColumn('tanggalAcara', function ($data) {
+                return $data->tanggalAcara->format('d/M/Y');
             })
             ->addColumn('pathFile', function ($data) {
                 return view('template.link', compact('data'));

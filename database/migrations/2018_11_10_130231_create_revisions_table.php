@@ -18,7 +18,6 @@ class CreateRevisionsTable extends Migration
             $table->integer('idAcara');
             $table->string('comment', 100);
             $table->string('commentId', 100);
-            $table->boolean('status')->default('0');
             $table->timestamps();
         });
     }
