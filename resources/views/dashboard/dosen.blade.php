@@ -27,7 +27,16 @@
     </div>
     <div class="card mt-4">
         <div class="card-body">
-            
+            <div class="flash-message">
+                @if(Session::has('add-revisi-sukses'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{Session::get('add-revisi-sukses')}}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  @endif
+            </div>
             <div class="table-responsive">
                 <table class="table table-inverse" id="tDosenDashboard">
                     <thead class="thead-default">
@@ -46,7 +55,7 @@
                         </tbody>
                 </table>
             </div>
-            
+                         
 
             {{-- MODAL --}}
             <div class="modal fade" id="modalDosenDecline" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -59,13 +68,14 @@
                       </button>
                     </div>
                     <div class="modal-body">
-                        <form action="kegiatan/upload" method="post" enctype="multipart/form-data">
+                        <form action="dashboard/inputcomment" method="post" enctype="multipart/form-data">
                             {{ csrf_field() }}
                         <div class="card-body">
                             <h4 class="card-title" id="card-title-comment">Edit Acara</h4>
                             <div class="form-group">
-                                <label for="namaAcara">Judul revisi</label>
-                                <input type="text" name="namaAcara" id="namaAcara" class="form-control" placeholder="masukkan judul revisi">
+                                <label for="judulRevisi">Judul revisi</label>
+                                <input type="hidden" name="idAcara" id="idAcara" value="">
+                                <input type="text" name="judulRevisi" id="judulRevisi" class="form-control" placeholder="masukkan judul revisi">
                             </div>
                             
                             <button class="btn btn-warning" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
