@@ -1,3 +1,16 @@
+@if(session('success'))
+<div class="alert alert-success">
+    {{ session('success') }}
+</div>
+@endif
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            @include('partial.error')
+        </div>
+    </div>
+</div>
 @foreach ($kegiatan as $keg)
 <div class="col-md-6">
     <div class="jumbotron">
@@ -41,53 +54,54 @@
 </div>
 @endforeach
 
-  
   <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-            <form action="kegiatan/upload" method="post" enctype="multipart/form-data">
+            <form action="kegiatan/edit" method="post" enctype="multipart/form-data">
                 {{ csrf_field() }}
             <div class="card-body">
-                <h4 class="card-title">Edit Acara</h4>
+                {{-- <h4 class="card-title">Edit Acara</h4> --}}
                 <div class="form-group">
-                    <label for="namaAcara">Nama Acara</label>
-                    <input type="text" name="namaAcara" id="namaAcara" class="form-control" placeholder="masukkan nama acara">
+                    <input type="hidden" name="edit_idacara" id="edit_idacara" value="">
+                    <label for="edit_namaAcara">Nama Acara</label>
+                    <input type="text" name="edit_namaAcara" id="edit_namaAcara" class="form-control" placeholder="masukkan nama acara">
                 </div>
                 <div class="form-group">
-                    <label for="temaAcara">Tema Acara</label>
-                    <input type="text" name="temaAcara" id="temaAcara" class="form-control" placeholder="masukkan tema acara">
+                    <label for="edit_temaAcara">Tema Acara</label>
+                    <input type="text" name="edit_temaAcara" id="edit_temaAcara" class="form-control" placeholder="masukkan tema acara">
                 </div>
                 <div class="form-group">
-                    <label for="tanggalAcara">Tanggal Acara</label>
-                    <input type="date" name="tanggalAcara" id="tanggalAcara" class="form-control">
+                    <label for="edit_tanggalAcara">Tanggal Acara</label>
+                    <input type="date" name="edit_tanggalAcara" id="edit_tanggalAcara" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label for="tempatAcara">Tempat Acara</label>
-                    <input type="text" name="tempatAcara" id="tempatAcara" class="form-control">
+                    <label for="edit_tempatAcara">Tempat Acara</label>
+                    <input type="text" name="edit_tempatAcara" id="edit_tempatAcara" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label for="berkasAcara">Upload Proposal Acara</label>
-                    <input type="file" name="berkasAcara" id="berkasAcara" class="form-control">
+                    <label for="edit_berkasAcara">Upload Proposal Acara</label>
+                    <input type="file" name="edit_berkasAcara" id="edit_berkasAcara" class="form-control">
                     <small class="text-muted">Maximum upload berkas 2MB</small>
                 </div>
                 <div class="form-group">
-                    <label for="anggaranAcara">Anggaran Acara</label>
-                    <input type="text" name="anggaranAcara" id="anggaranAcara" class="form-control">
+                    <label for="edit_anggaranAcara">Anggaran Acara</label>
+                    <input type="text" name="edit_anggaranAcara" id="edit_anggaranAcara" class="form-control">
                 </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary">Save</button>
+          <button type="submit" class="btn btn-success">Update</button>
         </div>
     </form>
+    
       </div>
     </div>
   </div>

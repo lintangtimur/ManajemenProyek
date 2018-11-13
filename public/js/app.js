@@ -13781,6 +13781,38 @@ $(function () {
 $('.btnEditOrmawa').click(function () {
     var idkegiatanOrmawa = $(this).data('acaraedit');
     console.log(idkegiatanOrmawa);
+    var edit_namaacara = $('#edit_namaAcara');
+    var edit_temaAcara = $('#edit_temaAcara');
+    var edit_tanggalAcara = $('#edit_tanggalAcara');
+    var edit_tempatAcara = $('#edit_tempatAcara');
+    var edit_berkasAcara = $('#edit_berkasAcara');
+    var edit_anggaranAcara = $('#edit_anggaranAcara');
+    var edit_idacara = $('#edit_idacara');
+
+    $.ajax({
+        url: 'dashboard/ormawa/edit/' + idkegiatanOrmawa,
+        method: 'get',
+        dataType: 'json'
+    }).done(function (resp) {
+        console.log(resp);
+        $.each(resp, function (index, val) {
+            var anggaran = val.anggaran;
+            var filename = val.fileName;
+            var idacara = val.id;
+            var namaAcara = val.namaAcara;
+            var tanggalacara = val.tanggalAcara;
+            var temaAcara = val.temaAcara;
+            var tempatacara = val.tempatAcara;
+            console.log(Date.parse(tanggalacara));
+            var tgl = moment(tanggalacara).format('YYYY-MM-DD');
+            edit_idacara.val(idacara);
+            edit_namaacara.val(namaAcara);
+            edit_temaAcara.val(temaAcara);
+            edit_tanggalAcara.val(tgl);
+            edit_tempatAcara.val(tempatacara);
+            edit_anggaranAcara.val(anggaran);
+        });
+    }).fail(function (err) {});
 });
 
 $('.btnRevisiacara').click(function () {

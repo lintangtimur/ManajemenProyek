@@ -15,7 +15,7 @@ class KegiatanController extends Controller
             'temaAcara'    => 'required',
             'tanggalAcara' => 'required',
             'tempatAcara'  => 'required',
-            'berkasAcara'  => 'required|file|max:2000|mimes:docx,doc,pdf',
+            'berkasAcara'  => 'required|file|max:2000',
             'anggaranAcara'=> 'required'
         ]);
 
@@ -55,5 +55,41 @@ class KegiatanController extends Controller
         ];
 
         return response()->json($resp);
+    }
+
+    public function get($idacara)
+    {
+        return Kegiatan::where('id', $idacara)->get()->toJSON();
+    }
+
+    public function update(Request $req)
+    {
+        $this->validate($req, [
+            'edit_namaAcara'    => 'required|max:100',
+            'edit_temaAcara'    => 'required',
+            'edit_tanggalAcara' => 'required',
+            'edit_tempatAcara'  => 'required',
+            'edit_berkasAcara'  => 'required|file|max:2000',
+            'edit_anggaranAcara'=> 'required'
+        ]);
+
+        $uploadedFile = $req->file('edit_berkasAcara');
+        $fileName = $uploadedFile->getClientOriginalName();
+        $path = $uploadedFile->storeAs('public/files', $fileName);
+
+        $data = Kegiatan::where('id', $req->edit_idacara)->first();
+        // dd($data);
+        $data->namaAcara = $req->edit_namaAcara;
+        $data->temaAcara = $req->edit_temaAcara;
+        $data->tanggalAcara = $req->edit_tanggalAcara;
+        $data->tempatAcara = $req->edit_tempatAcara;
+        $data->anggaran = $req->edit_anggaranAcara;
+        $data->fileName = $fileName;
+        $data->pathFile = $path;
+        $data->save();
+
+        return redirect()
+        ->back()
+        ->withSuccess(sprintf('File %s berhasil terupload', $fileName));
     }
 }

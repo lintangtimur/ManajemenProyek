@@ -5,3 +5,4 @@
 <script src="{{url('js/jquery.number.min.js')}}"></script>
 <script src="{{url('js/datatables.min.js')}}"></script>
 {{-- <script src="{{url('js/bootstrap.min.js')}}"></script> --}}
+<script src="{{url('js/moment.min.js')}}"></script>
