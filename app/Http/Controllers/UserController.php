@@ -27,7 +27,7 @@ class UserController extends Controller
             // return "<a href='#" . $data->id . "'><i style='color:green;' class='btnValidate far fa-check-circle fa-lg' data-acara=" . $data->id . " data-placement='right' title='Klik untuk ACC Proposal'></i></a>
             // <a href='#'><i style='color:red;' class='btnDecline fas fa-ban fa-lg' data-toggle='modal' data-acara=" . $data->id . " data-target='#modalDosenDecline' data-placement='right' title='Klik untuk menolak Proposal'></i></a>
             // ";
-            return $data->created_at->diffForHumans();
+            return $data->updated_at->diffForHumans();
         })
         ->editColumn('anggaran', function ($data) {
             $hasil_rupiah = 'Rp ' . number_format($data->anggaran, 2, ',', '.');
