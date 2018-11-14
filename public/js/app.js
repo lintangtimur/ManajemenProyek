@@ -13719,6 +13719,8 @@ __webpack_require__(12);
 //     el: '#app'
 // });
 $(function () {
+    $('body').scrollspy({ target: "#historyApproved", offset: 50 });
+
     $('#anggaranAcara').number(true, 0);
     $(".social-login-box").height($(".login-box").height() - 1000);
     $('#tDosenDashboard').DataTable({
@@ -13777,6 +13779,81 @@ $(function () {
     });
 });
 
+$('#linkDosenHistory').click(function (event) {
+    $('#historyView').toggleClass('kosong');
+    if (this.hash !== "") {
+        // Prevent default anchor click behavior
+        event.preventDefault();
+
+        // Store hash
+        var hash = this.hash;
+
+        // Using jQuery's animate() method to add smooth page scroll
+        // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+        $('html, body').animate({
+            scrollTop: $(hash).offset().top
+        }, 800, function () {
+
+            // Add hash (#) to URL when done scrolling (default click behavior)
+            window.location.hash = hash;
+        });
+    }
+
+    $('#tDosenHistory').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: "dashboard/history",
+        drawCallback: function drawCallback(settings) {
+            console.log(settings);
+            $('.btnValidate').click(function () {
+                var idAcara = $(this).data('acara');
+                console.log(idAcara);
+
+                swal({
+                    title: "Acc Proposal?",
+                    text: "Ketika sudah di ACC, tidak dapat dikembalikan kembali!",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: false
+                }).then(function (willDelete) {
+                    if (willDelete) {
+                        $.ajax({
+                            method: 'post',
+                            url: "/accproposal",
+                            data: {
+                                id: idAcara,
+                                _token: $('meta[name="csrf-token"]').attr('content')
+                            }
+                        }).done(function (resp) {
+                            console.info("SUKSES");
+                            console.info(resp);
+                            swal("Telah di acc", {
+                                icon: "success"
+                            });
+
+                            setTimeout(function () {
+                                location.reload();
+                            }, 2000);
+                        }).fail(function (resp) {
+                            console.error(resp);
+                            console.log("GAGAL UPDATE");
+                        });
+                    } else {
+                        swal("Proses ACC proposal dibatalkan");
+                    }
+                });
+            });
+
+            $('.btnDecline').click(function () {
+                var idAcara = $(this).data('acara');
+                var namaAcara = $(this).parents("tr").children("td:first").text();
+                $('#idAcara').val(idAcara);
+                $('#card-title-comment').text(namaAcara);
+            });
+        },
+        columns: [{ data: 'namaAcara', name: 'namaAcara' }, { data: 'temaAcara', name: 'temaAcara' }, { data: 'tanggalAcara', name: 'tanggalAcara' }, { data: 'tempatAcara', name: 'tempatAcara' }, { data: 'username', name: 'username' }, { data: 'anggaran', name: 'anggaran' }, { data: 'pathFile', name: 'proposal' }, { data: 'action', name: 'action' }]
+    });
+});
 // Button ketika ormawa ingin mengedit inputan kegiatan
 $('.btnEditOrmawa').click(function () {
     var idkegiatanOrmawa = $(this).data('acaraedit');
@@ -13803,7 +13880,7 @@ $('.btnEditOrmawa').click(function () {
             var tanggalacara = val.tanggalAcara;
             var temaAcara = val.temaAcara;
             var tempatacara = val.tempatAcara;
-            console.log(Date.parse(tanggalacara));
+
             var tgl = moment(tanggalacara).format('YYYY-MM-DD');
             edit_idacara.val(idacara);
             edit_namaacara.val(namaAcara);

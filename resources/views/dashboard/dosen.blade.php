@@ -1,3 +1,4 @@
+
 <div class="col-md-12">
     <h1>Dashboard</h1>
     <div class="row">
@@ -11,11 +12,11 @@
                     </div>
                     <div class="col-md-8">
                         
-                        <small class="text-muted float-right mt-2"><div data-placement="right" title="1 Bulan lalu">Last Acc: 20 September 2018</div></small>
+                        <small class="text-muted float-right mt-2"><div data-placement="right" title="1 Bulan lalu">Terakhir Acc: 20 September 2018</div></small>
                         <div class="card-body">
                                 <span class="badge badge-success mt-2">Approved</span>
                             <h4 class="card-title" style="color:#868bc2;">Proposal Approved</h4>
-                            <span class="badge badge-primary">History</span>
+                            <a href="#" id="linkDosenHistory" class="badge badge-primary"><i class="fas fa-history"></i> History</a>
                             <p class="card-text">Proposal yang telah di diterima</p>
                             
                         </div>
@@ -55,6 +56,7 @@
                         </tbody>
                 </table>
             </div>
+
                          
 
             {{-- MODAL --}}
@@ -100,5 +102,34 @@
                 </div>
               </div>
         </div>
+    </div>
+
+</div>
+
+<div class="row mt-4">
+    <div class="col-md-12 kosong" id="historyView">
+            <div class="card">        
+                <div class="card-body">
+                    <h4 class="card-title"><a data-toggle="collapse" aria-expanded="false" aria-controls="collapseExample" href="#aaa"><i class="fas fa-history" id="historyApproved"  role="button"></i> History Approved</a></h4>
+                        <div class="table-responsive class="collapse" id="aaa"">
+                            <table class="table table-inverse" id="tDosenHistory">
+                                <thead class="thead-default">
+                                    <tr>
+                                        <th>Nama Kegiatan</th>
+                                        <th>Tema Acara</th>
+                                        <th>Waktu Acara</th>
+                                        <th>Tempat Acara</th>
+                                        <th>Penyelenggara</th>
+                                        <th>Anggaran</th>
+                                        <th>Proposal</th>
+                                        <th width="15%;">Kapan Di Acc</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                            </table>
+                        </div>
+                </div>
+            </div>
     </div>
 </div>

@@ -3,7 +3,7 @@
 <head>
     @include('partial.header')
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
-
+    @stack('scripts')
 </head>
 <body>
     @include('partial.nav')

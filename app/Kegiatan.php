@@ -28,7 +28,12 @@ class Kegiatan extends Model
      */
     public function approved()
     {
-        return Kegiatan::where('status', '=', 1)->get();
+        // return Kegiatan::where('status', '=', 1)->get();
+        return Kegiatan::join('users', 'kegiatans.uploaderId', '=', 'users.id')
+            ->select('kegiatans.id', 'kegiatans.namaAcara', 'kegiatans.temaAcara', 'kegiatans.tanggalAcara', 'kegiatans.tempatAcara', 'kegiatans.fileName', 'kegiatans.anggaran', 'kegiatans.pathFile', 'kegiatans.status', 'users.username', 'kegiatans.created_at')
+            ->where('kegiatans.status', 1)
+            ->orderBy('tanggalAcara', 'DESC')
+            ->get();
     }
 
     // public function getTanggalAcaraAttribute()

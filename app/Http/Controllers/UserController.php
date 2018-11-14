@@ -16,6 +16,34 @@ use App\Revisions;
 
 class UserController extends Controller
 {
+    public function history()
+    {
+        $user = new Kegiatan();
+        $data = $user->approved();
+
+        // return view('dashboard.history');
+        return Datatables::of($data)
+        ->addColumn('action', function ($data) {
+            // return "<a href='#" . $data->id . "'><i style='color:green;' class='btnValidate far fa-check-circle fa-lg' data-acara=" . $data->id . " data-placement='right' title='Klik untuk ACC Proposal'></i></a>
+            // <a href='#'><i style='color:red;' class='btnDecline fas fa-ban fa-lg' data-toggle='modal' data-acara=" . $data->id . " data-target='#modalDosenDecline' data-placement='right' title='Klik untuk menolak Proposal'></i></a>
+            // ";
+            return $data->created_at->diffForHumans();
+        })
+        ->editColumn('anggaran', function ($data) {
+            $hasil_rupiah = 'Rp ' . number_format($data->anggaran, 2, ',', '.');
+
+            return $hasil_rupiah;
+        })
+        ->editColumn('tanggalAcara', function ($data) {
+            return $data->tanggalAcara->format('d/M/Y');
+        })
+        ->addColumn('pathFile', function ($data) {
+            return view('template.link', compact('data'));
+        })
+        ->rawColumns(['pathFile', 'action'])
+        ->make(true);
+    }
+
     public function getDosen()
     {
         $user = new User();

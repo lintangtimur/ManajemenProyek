@@ -19,6 +19,7 @@
         font-family: GoogleSans-Regular !important;
         background:url('img/background_body.png');
         background-size:100%;
+        position: relative !important;
     }
     #contentCard{
         position: absolute;
@@ -30,5 +31,11 @@
     .activeMenu{
         background-color: #000000;
         color: white !important;
+    }
+    #historyApproved{
+        height: 50px;
+    }
+    .kosong{
+        display: none;
     }
 </style>

@@ -32,3 +32,5 @@ Route::post('dashboard/inputcomment', 'RevisionsController@store');
 
 Route::get('dashboard/revisi/commendid/{idacara}', 'RevisionsController@get')->name('revisi.show');
 Route::get('dashboard/ormawa/edit/{idacara}', 'KegiatanController@get');
+
+Route::get('dashboard/history', 'UserController@history');
