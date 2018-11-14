@@ -28,7 +28,7 @@
         transform: translateX(-50%) translateY(-50%);
     }
     .activeMenu{
-        background-color: red;
+        background-color: #000000;
         color: white !important;
     }
 </style>

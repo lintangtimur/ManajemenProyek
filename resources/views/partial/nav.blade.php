@@ -1,12 +1,12 @@
     <nav class="navbar navbar-expand-lg  navbar-light bg-light">
     <span class="navbar-brand">NASM</span>
     <div class="wrapper">
-        <div class="main_sidebar">
+        <div class="main_sidebar mt-4">
             <ul>
-                <li><a href="/dashboard" ><i class="fas fa-home"></i>Dashboard  <span class="sr-only">(current)</span></a></li>
+                <li ><a href="/dashboard" class="{{ Request::segment(1) === 'dashboard' ? 'activeMenu' : null }}"><i class="fas fa-home "></i>Dashboard  <span class="sr-only">(current)</span></a></li>
                 <li><span>
                     @if(Auth::user()->roleid == 11)
-                        <a  href="/inputevent" ><i class="fas fa-copy"></i>Input Event</a>
+                        <a  href="/inputevent" class="{{ Request::segment(1) === 'inputevent' ? 'activeMenu' : null }}"><i class="fas fa-copy"></i>Input Event</a>
                     @endif
                     </span>
                 </li>
