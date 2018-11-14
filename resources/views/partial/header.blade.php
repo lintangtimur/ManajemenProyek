@@ -36,6 +36,6 @@
         height: 50px;
     }
     .kosong{
-        display: none;
+        display: none !important;
     }
 </style>

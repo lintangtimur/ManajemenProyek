@@ -44,7 +44,7 @@
                     @endif
                     </div>
                 </div>
-                <button type="button" class="btn btn-primary float-right ml-2">View</button>
+                <button type="button" class="btn btn-primary btnViewOrmawa float-right ml-2"  data-acaraview="{{$keg->id}}">View</button>
                 @if ($keg->status == 0)
                 <button type="button" class="btn btn-primary float-right btnEditOrmawa" data-toggle="modal" data-target="#exampleModal" data-acaraedit="{{$keg->id}}">Edit</button>
                 @endif
@@ -89,6 +89,7 @@
                 <div class="form-group">
                     <label for="edit_berkasAcara">Upload Proposal Acara</label>
                     <input type="file" name="edit_berkasAcara" id="edit_berkasAcara" class="form-control">
+                    <input type="text" name="view_berkasAcara" id="view_berkasAcara" class="form-control kosong">
                     <small class="text-muted">Maximum upload berkas 2MB</small>
                 </div>
                 <div class="form-group">
@@ -98,10 +99,12 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-success">Update</button>
+          <button type="submit" id="btnProcess" class="btn btn-success kosong">Update</button>
         </div>
     </form>
     
       </div>
     </div>
   </div>
+
+  

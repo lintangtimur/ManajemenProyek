@@ -13856,6 +13856,18 @@ $('#linkDosenHistory').click(function (event) {
 });
 // Button ketika ormawa ingin mengedit inputan kegiatan
 $('.btnEditOrmawa').click(function () {
+    $('#exampleModalLabel').html("Edit");
+    $('#edit_namaAcara').attr('readonly', false);
+    $('#edit_temaAcara').attr('readonly', false);
+    $('#edit_tanggalAcara').attr('readonly', false);
+    $('#edit_tempatAcara').attr('readonly', false);
+    $('#edit_berkasAcara').attr('readonly', false);
+    $('#edit_anggaranAcara').attr('readonly', false);
+
+    if ($('#btnProcess').hasClass('kosong')) {
+        $('#btnProcess').removeClass('kosong');
+    }
+    $('#view_berkasAcara').addClass('kosong');
     var idkegiatanOrmawa = $(this).data('acaraedit');
     console.log(idkegiatanOrmawa);
     var edit_namaacara = $('#edit_namaAcara');
@@ -13863,6 +13875,9 @@ $('.btnEditOrmawa').click(function () {
     var edit_tanggalAcara = $('#edit_tanggalAcara');
     var edit_tempatAcara = $('#edit_tempatAcara');
     var edit_berkasAcara = $('#edit_berkasAcara');
+    if (edit_berkasAcara.hasClass('kosong')) {
+        edit_berkasAcara.removeClass('kosong');
+    }
     var edit_anggaranAcara = $('#edit_anggaranAcara');
     var edit_idacara = $('#edit_idacara');
 
@@ -13892,6 +13907,62 @@ $('.btnEditOrmawa').click(function () {
     }).fail(function (err) {});
 });
 
+$('.btnViewOrmawa').click(function () {
+    var idkegiatanOrmawa = $(this).data('acaraview');
+    console.log(idkegiatanOrmawa);
+    $('#btnProcess').addClass('kosong');
+    $('#edit_namaAcara').attr('readonly', 'readonly');
+    $('#edit_temaAcara').attr('readonly', 'readonly');
+    $('#edit_tanggalAcara').attr('readonly', 'readonly');
+    $('#edit_tempatAcara').attr('readonly', 'readonly');
+    $('#edit_berkasAcara').attr('readonly', 'readonly');
+    $('#edit_anggaranAcara').attr('readonly', 'readonly');
+    $('#view_berkasAcara').attr('readonly', 'readonly');
+
+    var idkegiatanOrmawa = $(this).data('acaraview');
+    console.log(idkegiatanOrmawa);
+    var edit_namaacara = $('#edit_namaAcara');
+    var edit_temaAcara = $('#edit_temaAcara');
+    var edit_tanggalAcara = $('#edit_tanggalAcara');
+    var edit_tempatAcara = $('#edit_tempatAcara');
+    var edit_berkasAcara = $('#edit_berkasAcara');
+
+    edit_berkasAcara.addClass('kosong');
+
+    if ($('#view_berkasAcara').hasClass('kosong')) {
+        $('#view_berkasAcara').removeClass('kosong');
+    }
+    var edit_anggaranAcara = $('#edit_anggaranAcara');
+    var edit_idacara = $('#edit_idacara');
+
+    $.ajax({
+        url: 'dashboard/ormawa/edit/' + idkegiatanOrmawa,
+        method: 'get',
+        dataType: 'json'
+    }).done(function (resp) {
+        console.log(resp);
+        $.each(resp, function (index, val) {
+            var anggaran = val.anggaran;
+            var filename = val.fileName;
+            var idacara = val.id;
+            var namaAcara = val.namaAcara;
+            var tanggalacara = val.tanggalAcara;
+            var temaAcara = val.temaAcara;
+            var tempatacara = val.tempatAcara;
+
+            var tgl = moment(tanggalacara).format('YYYY-MM-DD');
+            edit_idacara.val(idacara);
+            edit_namaacara.val(namaAcara);
+            edit_temaAcara.val(temaAcara);
+            edit_tanggalAcara.val(tgl);
+            edit_tempatAcara.val(tempatacara);
+            edit_anggaranAcara.val(anggaran);
+            $('#view_berkasAcara').val(filename);
+        });
+    }).fail(function (err) {});
+    $('#exampleModalLabel').html("View");
+    $('#exampleModal').modal('show');
+});
 $('.btnRevisiacara').click(function () {
     var revisiacara_id = $(this).data('revisiacara');
     var comment_section = $('.revisicomment-' + revisiacara_id);
