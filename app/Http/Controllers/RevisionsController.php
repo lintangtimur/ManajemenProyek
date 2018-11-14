@@ -37,6 +37,15 @@ class RevisionsController extends Controller
     {
         $revisi = new Revisions;
         $revisi->idAcara = $request->idAcara;
+
+        if ($request->catatanRevisi == null) {
+            $request->catatanRevisi = 'tidakada';
+        }
+
+        if ($request->judulRevisi == null) {
+            $request->judulRevisi = 'tidakada';
+        }
+        // dd($request->catatanRevisi);
         $revisi->comment = $request->catatanRevisi;
         $revisi->commentId = $request->idAcara + rand(1, 100);
         $revisi->judulrevisi = $request->judulRevisi;
