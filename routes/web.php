@@ -34,3 +34,6 @@ Route::get('dashboard/revisi/commendid/{idacara}', 'RevisionsController@get')->n
 Route::get('dashboard/ormawa/edit/{idacara}', 'KegiatanController@get');
 
 Route::get('dashboard/history', 'UserController@history');
+
+Route::post('kegiatan/mahasiswa/input', 'KegiatanMahasiswaController@store');
+Route::get('kegiatan/mahasiswa/index', 'KegiatanMahasiswaController@index');

@@ -92,7 +92,21 @@ $(function(){
             { data: 'action', name: 'action'}
         ]
     });
+
+    $('#tMahasiswa').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: "kegiatan/mahasiswa/index",
+        columns: [
+            { data: 'namaAcara', name: 'namaAcara' },
+            { data: 'temaAcara', name: 'temaAcara' },
+            { data: 'tanggalAcara', name: 'tanggalAcara' },
+            { data: 'tempatAcara', name: 'tempatAcara' },
+            { data: 'status', name: 'status'}
+        ]
+    })
 })
+
 
 
 $('#linkDosenHistory').click(function(event){
@@ -115,6 +129,7 @@ $('#linkDosenHistory').click(function(event){
         });
       }
 
+    
     
     $('#tDosenHistory').DataTable({
         processing: true,
