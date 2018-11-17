@@ -9,6 +9,36 @@ use Yajra\DataTables\Facades\DataTables;
 
 class KegiatanMahasiswaController extends Controller
 {
+    public function dosen(Request $req)
+    {
+        return view('dashboard.kmahasiswa');
+    }
+
+    public function indexDosen()
+    {
+        $user = new KegiatanMahasiswa();
+        $data = $user->dosen();
+
+        return Datatables::of($data)
+            ->addColumn('status', function ($data) {
+                return "<a href='#" . $data->id . "'><i style='color:green;' class='btnValidateKegiatan far fa-check-circle fa-lg' data-acara=" . $data->id . " data-placement='right' title='Klik untuk ACC Kegiatan'></i></a>
+                ";
+            })
+            ->editColumn('anggaran', function ($data) {
+                $hasil_rupiah = 'Rp ' . number_format($data->anggaran, 2, ',', '.');
+
+                return $hasil_rupiah;
+            })
+            ->editColumn('tanggalAcara', function ($data) {
+                return $data->tanggalAcara->format('d/M/Y');
+            })
+            ->addColumn('scan', function ($data) {
+                return view('template.link', compact('data'));
+            })
+            ->rawColumns(['scan', 'status'])
+            ->make(true);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -47,9 +77,15 @@ class KegiatanMahasiswaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function acc(Request $req)
     {
-        //
+        $res = KegiatanMahasiswa::where('id', $req->id)->update(['status'=>1]);
+        $resp = [
+            'status'       => 'success',
+            'affectedRows' => $res
+        ];
+
+        return response()->json($resp);
     }
 
     /**

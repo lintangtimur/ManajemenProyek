@@ -30,10 +30,10 @@ $(function(){
         serverSide: true,
         ajax: "dosendashboard",
         drawCallback: function(settings){
-            console.log(settings);
+            
             $('.btnValidate').click(function(){
                 var idAcara = $(this).data('acara');
-                console.log(idAcara);
+                
             
                 swal({
                     title: "Acc Proposal?",
@@ -96,7 +96,7 @@ $(function(){
     $('#tMahasiswa').DataTable({
         processing: true,
         serverSide: true,
-        ajax: "kegiatan/mahasiswa/index",
+        ajax: "dashboard/kegiatan/mahasiswa/index",
         columns: [
             { data: 'namaAcara', name: 'namaAcara' },
             { data: 'temaAcara', name: 'temaAcara' },
@@ -104,6 +104,66 @@ $(function(){
             { data: 'tempatAcara', name: 'tempatAcara' },
             { data: 'status', name: 'status'}
         ]
+    })
+
+    $('#tkMahasiswa').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: "kegiatan/mahasiswa/dosen",
+        drawCallback: function(settings){
+            
+            $('.btnValidateKegiatan').click(function(){
+                var idAcara = $(this).data('acara');
+                
+            
+                swal({
+                    title: "Acc Kegiatan?",
+                    text: "Ketika sudah di ACC, tidak dapat dikembalikan kembali!",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: false,
+                  })
+                  .then((willDelete) => {
+                    if (willDelete) {
+                        $.ajax({
+                            method: 'post',
+                            url: "kegiatan/mahasiswa/acc",
+                            data: {
+                                id: idAcara,
+                                _token: $('meta[name="csrf-token"]').attr('content')
+                            }
+                        })
+                        .done(function(resp){
+                            console.info("SUKSES");
+                            console.info(resp);
+                            swal("Kegiatan berhasil di approve", {
+                                icon: "success",
+                            });
+                            
+                            setTimeout(() => {
+                                location.reload();
+                            }, 2000);          
+                        })
+                        .fail(function(resp){
+                            console.error(resp);
+                            console.log("GAGAL UPDATE");
+                        });
+            
+                    } else {
+                      swal("Proses ACC proposal dibatalkan");
+                    }
+                  });
+            });
+        },
+        columns: [
+            { data: 'namaAcara', name: 'namaAcara' },
+            { data: 'temaAcara', name: 'temaAcara' },
+            { data: 'tanggalAcara', name: 'tanggalAcara' },
+            { data: 'tempatAcara', name: 'tempatAcara' },
+            { data: 'scan', name: 'scan' },
+            { data: 'status', name: 'status'}
+        ]
+        
     })
 })
 
@@ -136,10 +196,10 @@ $('#linkDosenHistory').click(function(event){
         serverSide: true,
         ajax: "dashboard/history",
         drawCallback: function(settings){
-            console.log(settings);
+            
             $('.btnValidate').click(function(){
                 var idAcara = $(this).data('acara');
-                console.log(idAcara);
+                
             
                 swal({
                     title: "Acc Proposal?",
@@ -214,7 +274,7 @@ $('.btnEditOrmawa').click(function(){
     }
     $('#view_berkasAcara').addClass('kosong');
     var idkegiatanOrmawa = $(this).data('acaraedit');
-    console.log(idkegiatanOrmawa);
+    
     var edit_namaacara = $('#edit_namaAcara');
     var edit_temaAcara = $('#edit_temaAcara');
     var edit_tanggalAcara = $('#edit_tanggalAcara');
@@ -232,7 +292,7 @@ $('.btnEditOrmawa').click(function(){
         dataType: 'json'
     })
     .done(function(resp){
-        console.log(resp);
+        
         $.each(resp, function(index, val){
             var anggaran = val.anggaran;
             var filename = val.fileName;
@@ -259,7 +319,7 @@ $('.btnEditOrmawa').click(function(){
 
 $('.btnViewOrmawa').click(function(){
     var idkegiatanOrmawa = $(this).data('acaraview');
-    console.log(idkegiatanOrmawa);
+    
     $('#btnProcess').addClass('kosong');
     $('#edit_namaAcara').attr('readonly','readonly');
     $('#edit_temaAcara').attr('readonly','readonly');
@@ -270,7 +330,7 @@ $('.btnViewOrmawa').click(function(){
     $('#view_berkasAcara').attr('readonly','readonly');
 
     var idkegiatanOrmawa = $(this).data('acaraview');
-    console.log(idkegiatanOrmawa);
+    
     var edit_namaacara = $('#edit_namaAcara');
     var edit_temaAcara = $('#edit_temaAcara');
     var edit_tanggalAcara = $('#edit_tanggalAcara');
@@ -291,7 +351,7 @@ $('.btnViewOrmawa').click(function(){
         dataType: 'json'
     })
     .done(function(resp){
-        console.log(resp);
+        
         $.each(resp, function(index, val){
             var anggaran = val.anggaran;
             var filename = val.fileName;
@@ -321,7 +381,7 @@ $('.btnRevisiacara').click(function(){
     var revisiacara_id = $(this).data('revisiacara');
     var comment_section = $('.revisicomment-'+revisiacara_id);
     var judul_section = $('.judulrevisi-'+revisiacara_id);
-    console.log(revisiacara_id);
+    
 
     $.ajax({
         url: 'dashboard/revisi/commendid/'+revisiacara_id,
@@ -329,9 +389,9 @@ $('.btnRevisiacara').click(function(){
         dataType: 'json',
     })
     .done(function(resp){
-        console.log(resp);
+        
         $.each(resp, function(index,val){
-            console.log(val);
+            
             comment_section.html(val.comment);
             judul_section.html(val.judulrevisi);
         });

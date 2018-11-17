@@ -1,15 +1,28 @@
     <nav class="navbar navbar-expand-lg  navbar-light bg-light">
-    <span class="navbar-brand">NASM</span>
+    <span class="navbar-brand">NASM v0.0.3</span>
     <div class="wrapper">
         <div class="main_sidebar mt-4">
             <ul>
-                <li ><a href="/dashboard" class="{{ Request::segment(1) === 'dashboard' ? 'activeMenu' : null }}"><i class="fas fa-home "></i>Dashboard  <span class="sr-only">(current)</span></a></li>
-                <li><span>
+                <li ><a href="/dashboard"
+                    @if(Request::is('dashboard'))
+                    class="activeMenu"
+                    @endif
+                    ><i class="fas fa-home "></i>Dashboard  <span class="sr-only">(current)</span></a></li>
+                
+                @if(Auth::user()->roleid == 10)
+                <li><a href="/dashboard/mahasiswa"
+                    @if(Request::is('dashboard/mahasiswa'))
+                    class="activeMenu"
+                    @endif
+                    >Mahasiswa</a></li>
+                @endif
+                <li>
                     @if(Auth::user()->roleid == 11)
                         <a  href="/inputevent" class="{{ Request::segment(1) === 'inputevent' ? 'activeMenu' : null }}"><i class="fas fa-copy"></i>Input Event</a>
                     @endif
-                    </span>
+                    
                 </li>
+                
             </ul>
         </div>
     </div>

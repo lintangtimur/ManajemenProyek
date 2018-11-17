@@ -36,4 +36,7 @@ Route::get('dashboard/ormawa/edit/{idacara}', 'KegiatanController@get');
 Route::get('dashboard/history', 'UserController@history');
 
 Route::post('kegiatan/mahasiswa/input', 'KegiatanMahasiswaController@store');
-Route::get('kegiatan/mahasiswa/index', 'KegiatanMahasiswaController@index');
+Route::get('dashboard/kegiatan/mahasiswa/index', 'KegiatanMahasiswaController@index');
+Route::get('dashboard/kegiatan/mahasiswa/dosen', 'KegiatanMahasiswaController@indexDosen');
+Route::post('dashboard/kegiatan/mahasiswa/acc', 'KegiatanMahasiswaController@acc');
+Route::get('dashboard/mahasiswa', 'KegiatanMahasiswaController@dosen')->name('dosen.mahasiswa');

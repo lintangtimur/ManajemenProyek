@@ -12,12 +12,12 @@
 <style>
     @font-face {
         font-family: 'GoogleSans-Regular'; /*a name to be used later*/
-        src: url('font/GoogleSans-Regular.ttf'); /*URL to font*/
+        src: url('../font/GoogleSans-Regular.ttf'); /*URL to font*/
     }
     body{
         background-color: #edf1f5 !important;       
         font-family: GoogleSans-Regular !important;
-        background:url('img/background_body.png');
+        background:url('../img/background_body.png');
         background-size:100%;
         position: relative !important;
     }
