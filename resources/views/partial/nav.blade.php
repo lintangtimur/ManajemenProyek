@@ -1,5 +1,5 @@
     <nav class="navbar navbar-expand-lg  navbar-light bg-light">
-    <span class="navbar-brand">NASM v0.0.3</span>
+    <span class="navbar-brand">NASM v1.0.0</span>
     <div class="wrapper">
         <div class="main_sidebar mt-4">
             <ul>
