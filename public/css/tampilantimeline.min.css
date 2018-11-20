@@ -1,6 +1,6 @@
 
   /** Css Upcoming Events **/
-  img { border: 0; max-width: 100%; }
+  
   
   @font-face{
     font-family: 'GoogleSans-Regular';
@@ -136,6 +136,7 @@
   border-radius:50%;
   background:#fff;
   position:absolute;
+  /*opacity: 0.7;*/
   top:-7%;
   right:15px;
   z-index:-1;
@@ -351,4 +352,91 @@
   width:0;
   height:0;
 }
+
+}
+
+@media only screen and (max-width:414px){
+  .page-header h1 {
+    font-size: 2em;
+    text-align: center;
+    color: #070707;
+    text-shadow: 1px 1px 0 #000;
+    top:50px;
+    position:absolute;
+    right:100px;
+    font-family: GoogleSans-Regular !important;
+  }
+  .main-timeline7{
+    overflow:hidden;
+    position:absolute;
+    margin-right: 450px;
+    width:300px;
+    top:100px;
+    
+  }
+
+}
+
+@media only screen and (max-width:360px){
+  .page-header h1 {
+    font-size: 1.8em;
+    text-align: center;
+    color: #070707;
+    text-shadow: 1px 1px 0 #000;
+    top:40px;
+    position:absolute;
+    right:50px;
+    font-family: GoogleSans-Regular !important;
+  }
+  .main-timeline7{
+    overflow:hidden;
+    position:absolute;
+    margin-right: 400px;
+    width:300px;
+    top:100px;
+    
+  }
+
+}
+@media only screen and (max-width:768px){
+  .page-header h1 {
+    font-size: 3.26em;
+    text-align: center;
+    color: #070707;
+    text-shadow: 1px 1px 0 #000;
+    top:40px;
+    position:absolute;
+    right:50px;
+    font-family: GoogleSans-Regular !important;
+  }
+  .main-timeline7{
+    overflow:hidden;
+    position:absolute;
+    margin-right: 250px;
+    width:500px;
+    top:100px;
+    
+  }
+
+}
+@media only screen and (max-width:1024px){
+  .page-header h1 {
+    font-size: 2.8em;
+    text-align: center;
+    color: #070707;
+    text-shadow: 1px 1px 0 #000;
+    top:-200px;
+    position:absolute;
+    right:-300px;
+    font-family: GoogleSans-Regular !important;
+  }
+  .main-timeline7{
+    overflow:hidden;
+    position:absolute;
+    margin-right: 50px;
+    width:500px;
+    top:-100px;
+    
+  }
+
 }
