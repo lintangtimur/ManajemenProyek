@@ -8,7 +8,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        if (session('roleid') == 11 || session('roleid') == 10 || session('roleid') == 12) {
+        if (session('roleid') == 11 || session('roleid') == 10 || session('roleid') == 12 || session('roleid') == 1) {
             return redirect('dashboard');
         }
 

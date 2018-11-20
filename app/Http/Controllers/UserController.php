@@ -80,6 +80,8 @@ class UserController extends Controller
         if (Auth::check() && Auth::user()->roleid == 1) {   // Check is user logged in
             $role = Auth::user()->roleid;
             $role = 'admin';
+
+            $roles = Roles::all()->take(3);
         } elseif (Auth::check() && Auth::user()->roleid == 10) {
             $role = 'dosen';
             $totalApproved = (new Kegiatan())->totalApproved();
@@ -102,7 +104,7 @@ class UserController extends Controller
         }
         Session::put('roleid', Auth::user()->roleid);
 
-        return view('dashboard', compact('role', 'kegiatan', 'data', 'totalApproved', 'tampung'));
+        return view('dashboard', compact('role', 'kegiatan', 'data', 'totalApproved', 'tampung', 'roles'));
     }
 
     /**
@@ -172,9 +174,11 @@ class UserController extends Controller
             'password' => 'required|min:5',
             'role'     => 'required'
         ], [
-            'email.requried' => 'Email harus diisi',
-            'email.unique'   => 'Email sudah terdaftar',
-            'password.min'   => 'Password minimal 5 karakter'
+            'role.required'    => 'Role harus diisi',
+            'username.required'=> 'Username harus diisi',
+            'email.required'   => 'Email harus diisi',
+            'email.unique'     => 'Email sudah terdaftar',
+            'password.min'     => 'Password minimal 5 karakter'
         ]);
 
         $user = User::create([
@@ -184,7 +188,7 @@ class UserController extends Controller
             'password'=> $req->password
         ]);
 
-        return redirect()->to('/')->with('message', 'Registrasi Sukses');
+        return redirect()->to('/dashboard')->with('message', 'Registrasi Sukses');
     }
 
     public function redirectToProvider()
