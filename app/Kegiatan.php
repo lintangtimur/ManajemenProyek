@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 
 class Kegiatan extends Model
 {
@@ -28,16 +29,13 @@ class Kegiatan extends Model
      */
     public function approved()
     {
-        // return Kegiatan::where('status', '=', 1)->get();
+        $sekarang = Carbon::now();
+
         return Kegiatan::join('users', 'kegiatans.uploaderId', '=', 'users.id')
             ->select('kegiatans.id', 'kegiatans.namaAcara', 'kegiatans.temaAcara', 'kegiatans.tanggalAcara', 'kegiatans.tempatAcara', 'kegiatans.fileName', 'kegiatans.anggaran', 'kegiatans.pathFile', 'kegiatans.status', 'users.username', 'kegiatans.updated_at')
             ->where('kegiatans.status', 1)
-            ->orderBy('tanggalAcara', 'DESC')
+            ->where('tanggalAcara', '>', $sekarang)
+            ->orderBy('tanggalAcara', 'ASC')
             ->get();
     }
-
-    // public function getTanggalAcaraAttribute()
-    // {
-    //     return $this->attributes['tanggalAcara']->format('m/d/Y');
-    // }
 }
