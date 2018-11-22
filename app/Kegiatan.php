@@ -36,6 +36,7 @@ class Kegiatan extends Model
             ->where('kegiatans.status', 1)
             ->where('tanggalAcara', '>', $sekarang)
             ->orderBy('tanggalAcara', 'ASC')
+            ->take(9)
             ->get();
     }
 }
