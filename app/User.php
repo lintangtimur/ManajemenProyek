@@ -17,6 +17,7 @@ class User extends Authenticatable
     protected $fillable = [
         'username', 'email', 'password', 'roleid'
     ];
+    protected $dates = ['created_at', 'updated_at'];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -58,6 +59,13 @@ class User extends Authenticatable
         return Kegiatan::join('users', 'kegiatans.uploaderId', '=', 'users.id')
             ->select('kegiatans.id', 'kegiatans.namaAcara', 'kegiatans.temaAcara', 'kegiatans.tanggalAcara', 'kegiatans.tempatAcara', 'kegiatans.fileName', 'kegiatans.anggaran', 'kegiatans.pathFile', 'kegiatans.status', 'users.username')
             ->orderBy('tanggalAcara', 'DESC')
+            ->get();
+    }
+
+    public function userManagementList()
+    {
+        return User::join('roles', 'users.roleid', '=', 'roles.roles_id')
+            ->select('users.*', 'roles.nama_role')
             ->get();
     }
 }

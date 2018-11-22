@@ -16,6 +16,55 @@ use App\Revisions;
 
 class UserController extends Controller
 {
+    /**
+     * Admin edit option
+     *
+     * @param  Request $req
+     * @return void
+     */
+    public function userEdit(Request $req)
+    {
+        $this->validate($req, [
+            'id_admin_edit'          => 'required',
+            'username_admin_edit'    => 'required',
+            'email_admin_edit'       => 'required',
+            'password_admin_edit'    => 'required',
+            'role_admin_edit'        => 'required'
+        ]);
+
+        $data = User::where('id', $req->id_admin_edit)->first();
+
+        $data->email = $req->email_admin_edit;
+        $data->password = $req->password_admin_edit;
+        $data->roleid = $req->role_admin_edit;
+        $data->save();
+
+        return redirect()->to('/dashboard')->with('message', 'Profile telah terupdate');
+        // return redirect()
+        // ->withSuccess(sprintf('Sukses update profile'));
+    }
+
+    public function userlist()
+    {
+        $data = (new User)->userManagementList();
+
+        return Datatables::of($data)
+        ->addColumn('action', function ($data) {
+            // return "<a href='#'><i class='btnAdminEditUser fas fa-user-edit' data-user=" . $data->id . " data-placement='right' title='Klik untuk edit user'></i> Edit</a>";
+
+            return '<button type="button" class="btn btn-secondary float-right btnAdminEditUser" data-toggle="modal" data-target="#modalAdminEditUser" data-user=' . $data->id . '><i class="fas fa-user-edit"></i> Edit</button>';
+        })
+        ->editColumn('updated_at', function ($data) {
+            // return $data->updated_at->format('l jS \\of F Y h:i:s A');
+            return $data->updated_at->diffForHumans();
+        })
+        ->editColumn('created_at', function ($data) {
+            return $data->created_at;
+        })
+        ->rawColumns(['action'])
+        ->make(true);
+    }
+
     public function history()
     {
         $user = new Kegiatan();

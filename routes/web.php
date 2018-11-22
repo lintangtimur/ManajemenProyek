@@ -40,3 +40,6 @@ Route::get('dashboard/kegiatan/mahasiswa/index', 'KegiatanMahasiswaController@in
 Route::get('dashboard/kegiatan/mahasiswa/dosen', 'KegiatanMahasiswaController@indexDosen');
 Route::post('dashboard/kegiatan/mahasiswa/acc', 'KegiatanMahasiswaController@acc');
 Route::get('dashboard/mahasiswa', 'KegiatanMahasiswaController@dosen')->name('dosen.mahasiswa');
+
+Route::get('dashboard/admin/userlist/', 'UserController@userlist');
+Route::post('dashboard/admin/edit', 'UserController@userEdit');

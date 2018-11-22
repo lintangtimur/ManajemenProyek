@@ -164,7 +164,30 @@ $(function(){
             { data: 'status', name: 'status'}
         ]
         
-    })
+    });
+
+    $('#tUserManagement').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: "dashboard/admin/userlist",
+        drawCallback: function(settings){
+            $('.btnAdminEditUser').click(function(){
+                var idUser = $(this).data('user');
+                alert(idUser);
+                
+                $('#modalAdminEditUser').modal("show");
+            });
+        },
+        columns: [
+            { data: 'id', name: 'id' },
+            { data: 'username', name: 'username' },
+            { data: 'nama_role', name: 'nama_role'},
+            { data: 'email', name: 'email' },
+            { data: 'created_at', name: 'created_at' },
+            { data: 'updated_at', name: 'updated_at'},
+            { data: 'action', name: 'action'}
+        ]
+    });
 })
 
 
@@ -258,7 +281,7 @@ $('#linkDosenHistory').click(function(event){
             { data: 'action', name: 'action'}
         ]
     });
-})
+});
 // Button ketika ormawa ingin mengedit inputan kegiatan
 $('.btnEditOrmawa').click(function(){
     $('#exampleModalLabel').html("Edit");
@@ -399,4 +422,24 @@ $('.btnRevisiacara').click(function(){
     .fail(function(err){
 
     });
+});
+
+$('#tUserManagement tbody').on( 'click', 'button', function () {
+    var t = $('#tUserManagement').DataTable();
+    var selected_row= t.row($(this).parents('tr')).data();
+    console.log(selected_row);
+
+    var usernameEdit = selected_row['username'];
+    var emailEdit = selected_row['email'];
+    var passwordEdit = selected_row['password'];
+    var idEdit = selected_row['id'];
+    var roleId_edit = selected_row['roleid'];
+
+    $('#id_admin_edit').val(idEdit);
+    $('#username_admin_edit').val(usernameEdit);
+    $('#email_admin_edit').val(emailEdit);
+    $('#role_admin_edit').val(roleId_edit);
+
+
+    
 });
