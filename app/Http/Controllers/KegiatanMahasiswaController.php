@@ -71,7 +71,7 @@ class KegiatanMahasiswaController extends Controller
     public function index()
     {
         $user = new KegiatanMahasiswa();
-        $data = $user->index();
+        $data = $user->index(Auth::user()->id);
 
         return Datatables::of($data)
             ->addColumn('status', function ($data) {
