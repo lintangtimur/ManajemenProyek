@@ -166,6 +166,20 @@ $(function(){
         
     });
 
+    $('#tDosenHistoryMahasiswa').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: "kegiatan/mahasiswa/dosen/history",
+        columns: [
+            { data: 'namaAcara', name: 'namaAcara' },
+            { data: 'temaAcara', name: 'temaAcara' },
+            { data: 'tanggalAcara', name: 'tanggalAcara' },
+            { data: 'tempatAcara', name: 'tempatAcara' },
+            { data: 'scan', name: 'scan' },
+            { data: 'updated_at', name: 'updated_at'}
+        ]
+    })
+
     $('#tUserManagement').DataTable({
         processing: true,
         serverSide: true,
@@ -173,7 +187,6 @@ $(function(){
         drawCallback: function(settings){
             $('.btnAdminEditUser').click(function(){
                 var idUser = $(this).data('user');
-                alert(idUser);
                 
                 $('#modalAdminEditUser').modal("show");
             });

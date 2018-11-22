@@ -38,6 +38,7 @@ Route::get('dashboard/history', 'UserController@history');
 Route::post('kegiatan/mahasiswa/input', 'KegiatanMahasiswaController@store');
 Route::get('dashboard/kegiatan/mahasiswa/index', 'KegiatanMahasiswaController@index');
 Route::get('dashboard/kegiatan/mahasiswa/dosen', 'KegiatanMahasiswaController@indexDosen');
+Route::get('dashboard/kegiatan/mahasiswa/dosen/history', 'KegiatanMahasiswaController@historyDosen');
 Route::post('dashboard/kegiatan/mahasiswa/acc', 'KegiatanMahasiswaController@acc');
 Route::get('dashboard/mahasiswa', 'KegiatanMahasiswaController@dosen')->name('dosen.mahasiswa');
 

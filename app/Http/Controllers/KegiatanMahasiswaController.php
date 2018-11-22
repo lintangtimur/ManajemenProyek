@@ -39,6 +39,30 @@ class KegiatanMahasiswaController extends Controller
             ->make(true);
     }
 
+    public function historyDosen()
+    {
+        $user = new KegiatanMahasiswa();
+        $data = $user->historyMahasiswa();
+
+        return Datatables::of($data)
+            ->addColumn('updated_at', function ($data) {
+                return $data->updated_at->diffForHumans();
+            })
+            ->editColumn('anggaran', function ($data) {
+                $hasil_rupiah = 'Rp ' . number_format($data->anggaran, 2, ',', '.');
+
+                return $hasil_rupiah;
+            })
+            ->editColumn('tanggalAcara', function ($data) {
+                return $data->tanggalAcara->format('d/M/Y');
+            })
+            ->addColumn('scan', function ($data) {
+                return view('template.link', compact('data'));
+            })
+            ->rawColumns(['scan', 'updated_at'])
+            ->make(true);
+    }
+
     /**
      * Display a listing of the resource.
      *
