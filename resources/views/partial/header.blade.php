@@ -8,6 +8,15 @@
 <link rel="stylesheet" href="{{asset('css/sidebar.min.css')}}">
 <link rel="stylesheet" href="{{asset('css/datatables.min.css')}}">
 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-78259962-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-78259962-2');
+</script>
 
 <style>
     @font-face {
