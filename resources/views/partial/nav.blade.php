@@ -17,7 +17,7 @@
                     @if(Request::is('dashboard/mahasiswa'))
                     class="activeMenu"
                     @endif
-                    >Mahasiswa</a></li>
+                    ><i class="fas fa-user "></i>Mahasiswa</a></li>
                 @endif
                 <li >
                     @if(Auth::user()->roleid == 11)
@@ -25,7 +25,7 @@
                     @endif
                     
                 </li>
-<li class="kiri">
+            <li class="kiri">
             
                 <a href="/logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
             
