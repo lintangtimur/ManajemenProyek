@@ -1,11 +1,11 @@
 .main_sidebar {
     min-height:100vh;
     position: absolute;
-    top:50px;
+    top:10px;
     left:0;
     width:120px;
     transition: all 150ms cubic-bezier(0.65, 0.05, 0.36, 1);
-    will-change: left, width;
+    will-change: auto;
     
 }
 
@@ -16,6 +16,7 @@
 }
 .main_sidebar ul li {
     padding:10px;
+    display: inline-block;
 }
 .main_sidebar ul li a {
     color:grey;
@@ -28,6 +29,10 @@
     font-size:18px;
     padding-left:7px;
 }
+.kiri{
+    visibility: hidden;
+}
+
 /* .active{
     background-color: red;
     color: white;
@@ -36,11 +41,61 @@
     color:#167696;
     text-decoration:none;
 }
-.main {
-    float:right;
-    color:#fff;
-    display:block;
-    width:100%;
-    background:red;
-    min-height:100vh;
+@media only screen and (max-width:414px){
+    .main_sidebar {
+        position: absolute;
+       top: 50px;
+        width:100px;
+        margin: 0 auto;
+        left: 0;
+        
+    }
+    .main{
+        margin-left: 60px; /* Same as the width of the sidebar */
+        padding:0px 10px;
+        
+    }
+    .main2{
+        margin-left:30px
+    }
+   .kiri{
+      visibility: visible;
+     
+   }
+   .main_sidebar ul {
+    list-style:none;
+    padding-left:15px;
+    font-size: 12px;
+}
+.main_sidebar ul li {
+    padding:5px;
+    display: inline-block;
+}
+.main_sidebar ul li i {
+    float:left;
+    color:grey;
+    margin-left:-25px;
+    font-size:14px;
+    padding-left:7px;
+}
+}
+@media only screen and (max-width:360px){
+    .main_sidebar {
+        position: absolute;
+       top: 50px;
+        width:120px;
+        margin: 0 auto;
+        left: 0;
+        
+    }
+    .main{
+        margin-left: 90px; /* Same as the width of the sidebar */
+        padding:0px 10px;
+        
+    }
+   .kiri{
+      visibility: visible;
+     
+   }
+   
 }
