@@ -51,13 +51,14 @@
         
     }
     .main{
-        margin-left: 60px; /* Same as the width of the sidebar */
-        padding:0px 10px;
+        margin-left: 70px; /* Same as the width of the sidebar */
+        
         
     }
     .main2{
-        margin-left:30px
+        padding-left: -10px;
     }
+   
    .kiri{
       visibility: visible;
      
@@ -89,10 +90,14 @@
         
     }
     .main{
-        margin-left: 90px; /* Same as the width of the sidebar */
-        padding:0px 10px;
+        margin-left: 70 px; /* Same as the width of the sidebar */
+        
         
     }
+    .main2{
+        padding-left: -10px;
+    }
+   
    .kiri{
       visibility: visible;
      

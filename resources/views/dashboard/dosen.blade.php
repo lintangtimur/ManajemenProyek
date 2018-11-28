@@ -1,10 +1,41 @@
-
+<head>
+    <style>
+        .hilang{
+            visibility: visible;
+        }
+    @media only screen and (max-width:414px){
+        .hilang{
+            visibility: hidden;
+        }
+        .naik{
+            margin-top:-300px;
+            margin-left:-70px;
+            margin-bottom:10px;
+            margin-right:-20px;
+        }
+    }
+    @media only screen and (max-width:360px){
+        .hilang{
+            visibility: hidden;
+        }
+        .naik{
+            margin-top:-320px;
+            margin-left:-70px;
+            margin-bottom:10px;
+            margin-right:-20px;
+            
+        }
+    }   
+    }
+    </style>
+</head>
 <div class="col-md-12">
+<div class="hilang">
     <h1>Dashboard</h1>
-    <div class="row">
-        <div class="col-md-5">
-            <div class="card" >
-                <div class="row">
+    <div class="row"> 
+        <div class="col-md-5">   
+            <div class="card" >       
+                <div class="row">             
                     <div class="col-md-3 text-center" style="background-color:greenyellow;">
                         <div id="contentCard">
                         <div>{{$totalApproved}}</div>
@@ -26,6 +57,8 @@
             </div>
         </div>
     </div>
+</div>
+<div class="naik">
     <div class="card mt-4">
         <div class="card-body">
             <div class="flash-message">
@@ -38,6 +71,7 @@
                   </div>
                   @endif
             </div>
+
             <div class="table-responsive">
                 <table class="table table-inverse" id="tDosenDashboard">
                     <thead class="thead-default">
@@ -56,8 +90,8 @@
                         </tbody>
                 </table>
             </div>
-
-                         
+            </div>
+            
 
             {{-- MODAL --}}
             <div class="modal fade" id="modalDosenDecline" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
