@@ -8,8 +8,8 @@
             visibility: hidden;
         }
         .naik{
-            margin-top:-300px;
-            margin-left:-70px;
+            margin-top:-280px;
+            margin-left:0px;
             margin-bottom:10px;
             margin-right:-20px;
         }
@@ -19,8 +19,8 @@
             visibility: hidden;
         }
         .naik{
-            margin-top:-320px;
-            margin-left:-70px;
+            margin-top:-300px;
+            margin-left:0px;
             margin-bottom:10px;
             margin-right:-20px;
             

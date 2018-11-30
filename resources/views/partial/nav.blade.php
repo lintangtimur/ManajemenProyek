@@ -19,7 +19,7 @@
                     @endif
                     ><i class="fas fa-user "></i>Mahasiswa</a></li>
                 @endif
-                <li >
+                <li class="kiri2">
                     @if(Auth::user()->roleid == 11)
                         <a  href="/inputevent" class="{{ Request::segment(1) === 'inputevent' ? 'activeMenu' : null }}"><i class="fas fa-copy"></i>Input Event</a>
                     @endif
