@@ -13,7 +13,9 @@
             <div class="row">
                
                 <div class="col-md-12">
+                    <div class="kiri3">
                     <h1>Dashboard / Mahasiswa</h1>
+</div>
                     <div class="row">
                         <div class="col-md-5">
                             

@@ -32,7 +32,9 @@
 .kiri{
     visibility: hidden;
 }
-
+.kiri3{
+    visibility: visible;
+}
 /* .active{
     background-color: red;
     color: white;
@@ -62,6 +64,12 @@
    .kiri{
       visibility: visible;
      
+   }
+   .kiri2{
+       visibility: hidden;
+   }
+   .kiri3{
+       visibility:hidden;
    }
    .main_sidebar ul {
     list-style:none;
@@ -100,7 +108,14 @@
    
    .kiri{
       visibility: visible;
-     
+    }
+  
+   .kiri2{
+       visibility: hidden;
+       
    }
+   .kiri3{
+    visibility:hidden;
+}
    
 }
