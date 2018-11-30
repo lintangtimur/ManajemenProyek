@@ -6,7 +6,7 @@
 
 <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
 <div class="col-md-6">
-    <div class="card">
+    <div class="card shadow p-3 mb-5 bg-white rounded">
         @if(session('success'))
             <div class="alert alert-success">
                 {{ session('success') }}

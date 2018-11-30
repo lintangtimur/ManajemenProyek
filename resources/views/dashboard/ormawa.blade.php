@@ -28,7 +28,7 @@
             </div>
         </div>
         @endif
-        <div class="card">
+        <div class="card shadow p-3 mb-5 rounded">
             <div class="card-header">
                 NASM
             </div>
