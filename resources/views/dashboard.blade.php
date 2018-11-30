@@ -8,8 +8,9 @@
 <body>
     @include('partial.nav')
     <div id="content">
-    <div id="asu">
+    <div class="main">
         <div class="container mt-4">
+            <div class="main2">
             <div class="row">
                 @if($role == 'admin')
                 @include('dashboard.admin')
@@ -27,6 +28,7 @@
         </div>
     </div>
     </div>
+</div>
     @include('partial.dependency')
 
 </body>
