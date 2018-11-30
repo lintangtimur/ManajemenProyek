@@ -1,4 +1,4 @@
-    <nav class="navbar navbar-expand-lg  navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg shadow p-3 mb-5 bg-white rounded navbar-light bg-light">
     <span class="navbar-brand">NASM v1.1.2</span>
     <div class="wrapper">
         <div class="main_sidebar mt-4">
